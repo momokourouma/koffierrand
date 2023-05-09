@@ -22,5 +22,7 @@ String? validateName(String? name){
 }
 
 String? validateLastName(String? lastname){
-
+      if(lastname!.isEmpty){
+        return "name cant be empty";
+      } return null;
 }
