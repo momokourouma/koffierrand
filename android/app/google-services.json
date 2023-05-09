@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "851496593137",
+    "project_id": "koffierranddev",
+    "storage_bucket": "koffierranddev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851496593137:android:6f59affec094c6fc00eb50",
+        "android_client_info": {
+          "package_name": "com.example.monprojetfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851496593137-7v8di936omnhj5ghaerfd33blbm68lea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWNn_X0CLHLqpvm9f9cM6Uek6Sje8aSBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851496593137-7v8di936omnhj5ghaerfd33blbm68lea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
