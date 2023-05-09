@@ -26,3 +26,16 @@ String? validateLastName(String? lastname){
         return "name cant be empty";
       } return null;
 }
+
+String? validateDateNaissance(String? dateDeNaissance){
+  if(dateDeNaissance!.isEmpty){
+    return "name cant be empty";
+  }return null;
+}
+
+String? validateNationaity(String? nationality){
+  if(nationality!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+
