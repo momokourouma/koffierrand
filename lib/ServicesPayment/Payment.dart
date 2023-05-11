@@ -43,9 +43,9 @@ class _PaymentState extends State<Payment> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 30),
+                            padding: const EdgeInsets.only(top: 25),
                             child: Text("PayCard",
                               style: GoogleFonts.orbitron(
                                 color: Colors.white,
@@ -54,7 +54,7 @@ class _PaymentState extends State<Payment> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 25),
+                          padding: const EdgeInsets.only(top: 20),
                           child: MaterialButton(onPressed: (){},child: Text("Payer",
                           style: GoogleFonts.lato(
                             fontSize: 18,

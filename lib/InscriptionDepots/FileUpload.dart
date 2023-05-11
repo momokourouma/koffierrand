@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
+import 'package:monprojetfinal/Service/DatabaseService.dart';
 
 import 'PaymentRegister.dart';
 
@@ -22,8 +23,9 @@ class FileUpload extends StatefulWidget {
 class _FileUploadState extends State<FileUpload> {
 
    FilePickerResult? result;
-
    List<FilePickerResult>? myfiles = [];
+
+   DataBaseService service = DataBaseService();
 
 
 
@@ -458,9 +460,27 @@ class _FileUploadState extends State<FileUpload> {
 
             MaterialButton(onPressed: () async{
 
-              for( var p in myfiles!.toSet().toList()){
-                print(p.files.first.path);
-              }
+             if(myfiles!.isEmpty || myfiles!.length < 4){
+               showDialog(context: context,
+                   builder: (contex){
+                     return AlertDialog(
+                       content: Text("Pour Proceder il faut postez vos doc"),
+                       backgroundColor: Colors.white,
+                     );
+                   });
+             }else{
+               try{
+                 for (var p in myfiles!.toSet().toList()){
+                   service.UploadDoc(p.files.first.name, p.files.first.path);
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+
+                 }
+               } catch(e){
+                 print(e);
+               }
+             }
+
+
 
               
 
@@ -468,7 +488,7 @@ class _FileUploadState extends State<FileUpload> {
 
 
 
-                //Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+                //
             },
               color: Colors.black,
               height: 45,

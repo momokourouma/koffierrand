@@ -6,7 +6,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 import 'package:monprojetfinal/AppLogic/Backend/Authfunction.dart';
-import 'package:monprojetfinal/AppLogic/Functions/Appfunctions.dart';
+import 'package:monprojetfinal/AppLogic/Functions/InputValidator.dart';
 import 'package:monprojetfinal/ClientNavbar/MyNav.dart';
 import 'package:monprojetfinal/LoginPages/ForgotPassword.dart';
 import 'package:monprojetfinal/LoginPages/Register.dart';
@@ -73,11 +73,7 @@ class _LoginState extends State<Login> {
                 Padding(
                  padding: EdgeInsets.all(20),
                  child: TextFormField(
-                   //validator: validateEmail,
-
-
-
-
+                   validator: validateEmail,
                    controller: _emailCOntroller,
                    cursorColor: Colors.black,
                    decoration: InputDecoration(
@@ -120,6 +116,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: TextFormField(
+                    validator: validatePassword,
                     obscureText: true,
 
                     controller: _passwordController,

@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 
+import '../Service/DatabaseService.dart';
 import 'PaymentRegister.dart';
 class FileUploadMaster extends StatefulWidget {
   const FileUploadMaster({Key? key}) : super(key: key);
@@ -15,10 +16,26 @@ class FileUploadMaster extends StatefulWidget {
 }
 
 class _FileUploadMasterState extends State<FileUploadMaster> {
+
+  FilePickerResult? result;
+  List<FilePickerResult>? myfiles = [];
+
+  DataBaseService service = DataBaseService();
+
+
+
+
+  String filename1= "";
+  String filename2= "";
+  String filename3= "";
+  String filename4= "";
+  String filename5= "";
+  String filename6= "";
+  bool istap = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#19A7CE"),
+      backgroundColor: HexColor("#2C3333"),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(18),
         child: Column(
@@ -31,7 +48,7 @@ class _FileUploadMasterState extends State<FileUploadMaster> {
               child: Text("Cliquez pour soumettre vos documents",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
                   )),
@@ -43,14 +60,93 @@ class _FileUploadMasterState extends State<FileUploadMaster> {
               children: [
                 Column(
                   children: [
+
+                    Container(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text("Extrait de naissance",
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          )),
+                    ),
+                    SizedBox(height: 5,),
+                    GestureDetector(
+                      onTap: ()async{
+                        result = await FilePicker.platform.pickFiles();
+
+                        if(result != null){
+                          PlatformFile file  = result!.files.first;
+                          myfiles?.add(result!);
+                          setState(() {
+                            filename1 = result!.files.first.name!;
+                          });
+                        }
+                        else{
+                          return;
+                        }
+                      },
+
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Container(
+                          height: 100,
+                          width: 150,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white.withOpacity(0.4)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:  [
+
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  //istap ? Icon(FontAwesomeIcons.plus, color: Colors.blue,) :
+                                  //    Icon(FontAwesomeIcons.minus,color: Colors.blue,),
+                                  Container(
+                                    height: 100,
+                                    width: 130,
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: Text("${filename1}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.lato(
+                                        color: Colors.white,
+                                      ),),
+                                  ),
+                                ],
+                              )
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 30,
+                ),
+
+                Column(
+                  children: [
+
+                    Text("Une photo d’identité",
+                        style: GoogleFonts.lato(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                        )),
+                    SizedBox(height: 5,),
                     GestureDetector(
                       onTap: ()async{
                         FilePickerResult? result = await FilePicker.platform.pickFiles();
 
                         if(result != null){
                           PlatformFile file  = result.files.first;
+                          myfiles?.add(result!);
                           setState(() {
-                            var filename = file.extension!;
+                            filename2 = file.name!;
                           });
                         }
                         else{
@@ -60,10 +156,10 @@ class _FileUploadMasterState extends State<FileUploadMaster> {
 
                       child: Container(
                         height: 100,
-                        width: 100,
+                        width: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.black),
+                            color: Colors.white.withOpacity(0.4)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:  [
@@ -73,9 +169,16 @@ class _FileUploadMasterState extends State<FileUploadMaster> {
                               children: [
                                 //istap ? Icon(FontAwesomeIcons.plus, color: Colors.blue,) :
                                 //    Icon(FontAwesomeIcons.minus,color: Colors.blue,),
-                                Text("hello",style: GoogleFonts.lato(
-                                  color: Colors.white,
-                                ),),
+                                Container(
+                                  height: 100,
+                                  width: 130,
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Text("${filename2}",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.lato(
+                                      color: Colors.white,
+                                    ),),
+                                ),
                               ],
                             )
 
@@ -85,71 +188,78 @@ class _FileUploadMasterState extends State<FileUploadMaster> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                  child: Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.black),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          FontAwesomeIcons.plus,
-                          color: Colors.white,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.black),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        FontAwesomeIcons.plus,
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                ),
               ],
             ),
             const SizedBox(
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                   children: [
+
+                    Container(
+                      height: 60,
+                      width: 180,
+                      padding: EdgeInsets.only(left: 20),
+
+                      child: Text("Photocopie d’une pièce d'identité en cours de validité",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          )),
+                    ),
+                    SizedBox(height: 5,),
                     GestureDetector(
-                      child: Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.black),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:  [
-                            Icon(
-                              FontAwesomeIcons.plus,
-                              color: Colors.white,
-                            )
-                          ],
+                      onTap: ()async{
+                        FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                        if(result != null){
+                          PlatformFile file  = result.files.first;
+                          myfiles!.add(result);
+                          setState(() {
+                            filename3 = file.name!;
+                          });
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Container(
+                          height: 100,
+                          width: 150,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white.withOpacity(0.4)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:  [
+
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  //istap ? Icon(FontAwesomeIcons.plus, color: Colors.blue,) :
+                                  //    Icon(FontAwesomeIcons.minus,color: Colors.blue,),
+                                  Container(
+                                    height: 100,
+                                    width: 130,
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: Text("${filename3}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.lato(
+                                        color: Colors.white,
+                                      ),),
+                                  ),
+                                ],
+                              )
+
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -158,35 +268,367 @@ class _FileUploadMasterState extends State<FileUploadMaster> {
                 const SizedBox(
                   width: 10,
                 ),
+
                 Column(
                   children: [
+
+                    Container(
+                      height: 60,
+                      width: 180,
+
+
+                      child: Text("Relevé de notes de la Licence (L1,L2,L3)",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          )),
+                    ),
+                    SizedBox(height: 5,),
                     GestureDetector(
+                      onTap: ()async{
+                        FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                        if(result != null){
+                          PlatformFile file  = result.files.first;
+                          myfiles!.add(result);
+                          setState(() {
+                            filename4 = file.name!;
+                          });
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+
                       child: Container(
                         height: 100,
-                        width: 100,
+                        width: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.black),
+                            color: Colors.white.withOpacity(0.4)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
-                              FontAwesomeIcons.plus,
-                              color: Colors.white,
+                          children:  [
+
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                //istap ? Icon(FontAwesomeIcons.plus, color: Colors.blue,) :
+                                //    Icon(FontAwesomeIcons.minus,color: Colors.blue,),
+                                Container(
+                                  height: 100,
+                                  width: 130,
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Text("${filename4}",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.lato(
+                                      color: Colors.white,
+                                    ),),
+                                ),
+                              ],
                             )
+
                           ],
                         ),
                       ),
                     ),
                   ],
                 ),
+
+
               ],
             ),
-            SizedBox(
+
+            SizedBox(height: 20,),
+            Row(
+              children: [
+                Column(
+                  children: [
+
+                    Container(
+                      height: 60,
+                      width: 180,
+                      padding: EdgeInsets.only(left: 20),
+
+                      child: Text("Diplôme de Licence ou titre obtenu en équivalence",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          )),
+                    ),
+                    SizedBox(height: 5,),
+                    GestureDetector(
+                      onTap: ()async{
+                        FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                        if(result != null){
+                          PlatformFile file  = result.files.first;
+                          myfiles!.add(result);
+                          setState(() {
+                            filename3 = file.name!;
+                          });
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Container(
+                          height: 100,
+                          width: 150,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white.withOpacity(0.4)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:  [
+
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  //istap ? Icon(FontAwesomeIcons.plus, color: Colors.blue,) :
+                                  //    Icon(FontAwesomeIcons.minus,color: Colors.blue,),
+                                  Container(
+                                    height: 100,
+                                    width: 130,
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: Text("${filename3}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.lato(
+                                        color: Colors.white,
+                                      ),),
+                                  ),
+                                ],
+                              )
+
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+
+                Column(
+                  children: [
+
+                    Container(
+                      height: 60,
+                      width: 180,
+
+
+                      child: Text("Curriculum vitae (CV) actualisé",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          )),
+                    ),
+                    SizedBox(height: 5,),
+                    GestureDetector(
+                      onTap: ()async{
+                        FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                        if(result != null){
+                          PlatformFile file  = result.files.first;
+                          myfiles!.add(result);
+                          setState(() {
+                            filename4 = file.name!;
+                          });
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+
+                      child: Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white.withOpacity(0.4)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:  [
+
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                //istap ? Icon(FontAwesomeIcons.plus, color: Colors.blue,) :
+                                //    Icon(FontAwesomeIcons.minus,color: Colors.blue,),
+                                Container(
+                                  height: 100,
+                                  width: 130,
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Text("${filename4}",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.lato(
+                                      color: Colors.white,
+                                    ),),
+                                ),
+                              ],
+                            )
+
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+
+              ],
+            ),
+
+
+            SizedBox(height: 20,),
+
+
+
+
+
+
+            // last line
+
+            Padding(
+              padding: const EdgeInsets.only(left: 100),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+
+                      Container(
+                        height: 25,
+                        width: 180,
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text("Lettre de motivation",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                            )),
+                      ),
+                      SizedBox(height: 5,),
+                      GestureDetector(
+                        onTap: ()async{
+                          FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+                          if(result != null){
+                            String filename = result.files.first.name;
+                            myfiles!.add(result);
+                            print("hee is");
+
+
+
+
+                            setState(() {
+                              filename5 = filename;
+                            });
+                          }
+                          else{
+                            return null;
+                          }
+                        },
+
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30),
+                          child: Container(
+                            height: 100,
+                            width: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white.withOpacity(0.4)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:  [
+
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+
+
+                                    //istap ? Icon(FontAwesomeIcons.plus, color: Colors.blue,) :
+                                    //    Icon(FontAwesomeIcons.minus,color: Colors.blue,),
+                                    Container(
+                                      height: 100,
+                                      width: 130,
+                                      padding: EdgeInsets.only(top: 10),
+                                      child: Text(filename5,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.lato(
+                                          color: Colors.white,
+                                        ),),
+                                    ),
+                                  ],
+                                )
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+
+
+
+
+                ],
+              ),
+            ),
+
+
+            const SizedBox(
               height: 30,
             ),
-            MaterialButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+
+
+
+            MaterialButton(onPressed: () async{
+
+              if(myfiles!.isEmpty || myfiles!.length < 4){
+                showDialog(context: context,
+                    builder: (contex){
+                      return AlertDialog(
+                        content: Text("Pour Proceder il faut postez vos doc"),
+                        backgroundColor: Colors.white,
+                      );
+                    });
+              }else{
+                try{
+                  for (var p in myfiles!.toSet().toList()){
+                    service.UploadDoc(p.files.first.name, p.files.first.path);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+
+                  }
+                } catch(e){
+                  print(e);
+                }
+              }
+
+
+
+
+
+
+
+
+
+              //
             },
               color: Colors.black,
               height: 45,

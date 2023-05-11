@@ -9,9 +9,13 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:monprojetfinal/AppLogic/Functions/InputValidator.dart';
 import 'package:monprojetfinal/InscriptionDepots/FileUpload.dart';
+import 'package:monprojetfinal/InscriptionDepots/FileUploadMaster.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
 import 'package:monprojetfinal/model/Student.dart';
+
+import 'FileUploadBTS.dart';
 
 class DepotDoc extends StatefulWidget {
   const DepotDoc({Key? key}) : super(key: key);
@@ -31,6 +35,8 @@ class _DepotDocState extends State<DepotDoc> {
 
   DataBaseService service = DataBaseService();
 
+  final _formkey = GlobalKey<FormState>();
+
 
 
 
@@ -41,7 +47,7 @@ class _DepotDocState extends State<DepotDoc> {
     " Sciences Médicales",
     "Licence",
     "BTS",
-    "Master"
+    " Mastère"
   ];
   String curentv = "Ingéniérie";
 
@@ -53,6 +59,7 @@ class _DepotDocState extends State<DepotDoc> {
         child: Padding(
           padding: EdgeInsets.all(10),
           child: Form(
+            key: _formkey,
             child: Column(
               children: [
                 SizedBox(
@@ -65,6 +72,7 @@ class _DepotDocState extends State<DepotDoc> {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: TextFormField(
+                    validator: validateName,
                     controller: firstName,
                     cursorColor: Colors.white,
                     decoration: InputDecoration(
@@ -109,6 +117,7 @@ class _DepotDocState extends State<DepotDoc> {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: TextFormField(
+                    validator: validateLastName,
                     controller: lastName,
                     cursorColor: Colors.white,
                     decoration: InputDecoration(
@@ -153,6 +162,7 @@ class _DepotDocState extends State<DepotDoc> {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: TextFormField(
+                    validator: validateDateNaissance,
                     controller: dateDeNaissance,
                     readOnly: true,
                     onTap: () async {
@@ -214,6 +224,7 @@ class _DepotDocState extends State<DepotDoc> {
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: TextFormField(
+                    validator: validateNationaity,
                     readOnly: true,
                     controller: nationaliteController,
                     onTap: () {
@@ -317,6 +328,7 @@ class _DepotDocState extends State<DepotDoc> {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: DropdownButtonFormField(
+                    
 
                       style: const TextStyle(
                         color: Colors.blue,
@@ -360,31 +372,47 @@ class _DepotDocState extends State<DepotDoc> {
                 MaterialButton(
                   onPressed: () {
 
-                 /*   Student newStudent = Student(
-
+                    Student newStudent = Student(
                         Nationality: nationaliteController.text,
                         FirstName: firstName.text,
                         LastName: lastName.text,
                         DateOfBirth: dateDeNaissance.text,
                         Department: curentv
-                    ); */
+                    );
 
 
+                    if(_formkey.currentState!.validate()) {
+                      print(curentv);
+                      if (curentv == "BTS") {
+                        try {
+                          service.addStudent(newStudent);
+                        } on FirebaseFirestore catch (e) {
+                          print(e.toString());
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (
+                            context) => FileUploadBTS()));
+                      }
+                      else if (curentv == " Mastère"){
+                        try {
+                          service.addStudent(newStudent);
+                        } on FirebaseFirestore catch (e) {
+                          print(e.toString());
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (
+                            context) => FileUploadMaster()));
 
+                      }else{
+                        try {
+                          service.addStudent(newStudent);
+                        } on FirebaseFirestore catch (e) {
+                          print(e.toString());
+                        }
+                        Navigator.push(context, MaterialPageRoute(builder: (
+                            context) => FileUpload()));
 
-
-
-                  /*  try{
-                      service.addStudent(newStudent);
-                    }on FirebaseFirestore catch(e){
-                      print(e);
-                    } */
-
-
-                    //print("${userId}");
-
-
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => FileUpload()));
+                      }
+                    }
+                    
                   },
                   color: Colors.blue,
                   height: 45,

@@ -44,7 +44,7 @@ class _PaymentRegisterState extends State<PaymentRegister> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(9.0),
                           child: Padding(
                             padding: const EdgeInsets.only(top: 30),
                             child: Text("PayCard",

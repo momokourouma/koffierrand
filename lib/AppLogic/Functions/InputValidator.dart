@@ -39,3 +39,9 @@ String? validateNationaity(String? nationality){
   }return null;
 }
 
+
+String? validatedepartment(String department){
+  if(department!.isEmpty){
+    return "cant be empty";
+  }return null;
+}

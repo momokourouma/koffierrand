@@ -9,7 +9,7 @@ class Student {
  late String? Department;
   late bool? Payment;
  late bool? HouseReservation;
- late List<String> DepotDoc;
+ late List<String>? DepotDoc;
 
  Student({
 
@@ -20,6 +20,7 @@ class Student {
    this.Nationality,
    this.FirstName,
   this.LastName,
+  this.DepotDoc = null,
    this.DateOfBirth,
   this.Department,});
 
@@ -34,9 +35,8 @@ class Student {
     "Country" : Nationality,
     "HouseReservation" : HouseReservation,
     "Payement" : Payment,
+    "DepotDoc" : DepotDoc,
 
-
-   
 
   };
  }

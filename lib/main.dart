@@ -6,6 +6,7 @@ import 'package:monprojetfinal/AirportPickup/AiportPickup.dart';
 import 'package:monprojetfinal/Information/ContactApropos.dart';
 import 'package:monprojetfinal/InscriptionDepots/DepotDoc.dart';
 import 'package:monprojetfinal/InscriptionDepots/FileUpload.dart';
+import 'package:monprojetfinal/InscriptionDepots/FileUploadMaster.dart';
 import 'package:monprojetfinal/InscriptionDepots/PaymentValidation.dart';
 import 'package:monprojetfinal/LoginPages/AuthVerify.dart';
 import 'package:monprojetfinal/LoginPages/ForgotPassword.dart';
@@ -24,6 +25,7 @@ import 'package:monprojetfinal/ServicesPayment/paymentform.dart';
 import 'package:monprojetfinal/testingStack.dart';
 
 
+import 'InscriptionDepots/FileUploadBTS.dart';
 import 'InscriptionDepots/PaymentRegister.dart';
 import 'firebase_options.dart';
 
@@ -46,8 +48,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home:AuthVerify(),
-      home:DepotDoc(),
+      home:AuthVerify(),
+      //home:DepotDoc(),
 
     );
   }

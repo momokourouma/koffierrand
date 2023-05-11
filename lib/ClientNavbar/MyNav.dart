@@ -116,7 +116,7 @@ class _MyNavState extends State<MyNav> {
                             ),
                                MaterialButton(
                               onPressed: () {
-                                //Navigator.of(context).pop();
+                                Navigator.of(context).pop();
                               },
                               shape: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -150,7 +150,7 @@ class _MyNavState extends State<MyNav> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(left: 50),
+            padding: const EdgeInsets.only(left: 30),
             child: Text("Bienvenue a KOFFIERRAND ",
                 style: GoogleFonts.quicksand(
                   fontWeight: FontWeight.w900,
@@ -163,13 +163,15 @@ class _MyNavState extends State<MyNav> {
             height: 10,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 50),
-            child: Text("${user.uid}",
-                style: GoogleFonts.quicksand(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 20,
-                  color: Colors.white,
-                )),
+            padding: const EdgeInsets.only(left: 30),
+            child: Center(
+              child: Text("${user.email}",
+                  style: GoogleFonts.quicksand(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 20,
+                    color: Colors.white,
+                  )),
+            ),
           ),
 
           const SizedBox(
@@ -206,7 +208,7 @@ class _MyNavState extends State<MyNav> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(5),
                               child: Column(
                                 children: const [
                                   Center(
@@ -501,7 +503,7 @@ class _MyNavState extends State<MyNav> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(2),
                             child: Column(
                               children: const [
                                 Center(
