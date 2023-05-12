@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:AuthVerify(),
-      //home:DepotDoc(),
+      //home:AuthVerify(),
+      home:FileUpload(),
 
     );
   }

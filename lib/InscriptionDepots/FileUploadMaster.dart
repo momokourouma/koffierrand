@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
+import 'package:monprojetfinal/model/Student.dart';
 
 import '../Service/DatabaseService.dart';
 import 'PaymentRegister.dart';
@@ -612,6 +613,7 @@ class _FileUploadMasterState extends State<FileUploadMaster> {
                 try{
                   for (var p in myfiles!.toSet().toList()){
                     service.UploadDoc(p.files.first.name, p.files.first.path);
+
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
 
                   }

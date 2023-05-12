@@ -11,6 +11,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
 
+import '../model/Student.dart';
 import 'PaymentRegister.dart';
 
 class FileUpload extends StatefulWidget {
@@ -23,7 +24,7 @@ class FileUpload extends StatefulWidget {
 class _FileUploadState extends State<FileUpload> {
 
    FilePickerResult? result;
-   List<FilePickerResult>? myfiles = [];
+   List<FilePickerResult> myfiles = [];
 
    DataBaseService service = DataBaseService();
 
@@ -460,7 +461,20 @@ class _FileUploadState extends State<FileUpload> {
 
             MaterialButton(onPressed: () async{
 
-             if(myfiles!.isEmpty || myfiles!.length < 4){
+              List<String>? momo = [];
+              for( var filenames in myfiles){
+                momo.add(filenames.files.first.name);
+              }
+              print(momo.toSet().toList());
+
+             /* Student newStudent = Student.Doc();
+              newStudent.NomDocument = momo;
+              service.addNomDocument(newStudent); */
+
+
+
+
+            /* if(myfiles!.isEmpty || myfiles!.length < 4){
                showDialog(context: context,
                    builder: (contex){
                      return AlertDialog(
@@ -472,13 +486,14 @@ class _FileUploadState extends State<FileUpload> {
                try{
                  for (var p in myfiles!.toSet().toList()){
                    service.UploadDoc(p.files.first.name, p.files.first.path);
+
                    Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
 
                  }
                } catch(e){
                  print(e);
                }
-             }
+             } */
 
 
 

@@ -1,3 +1,5 @@
+import 'package:file_picker/file_picker.dart';
+
 class Student {
 
  late String? FirstName;
@@ -9,10 +11,11 @@ class Student {
  late String? Department;
   late bool? Payment;
  late bool? HouseReservation;
- late List<String>? DepotDoc;
+ late List<String>? NomDocument;
 
- Student({
+   Student.Doc(){}
 
+  Student({
    this.Matricule = null,
    this.PickAirport = null,
    this.Payment = false,
@@ -20,9 +23,12 @@ class Student {
    this.Nationality,
    this.FirstName,
   this.LastName,
-  this.DepotDoc = null,
+
    this.DateOfBirth,
-  this.Department,});
+  this.Department,
+ });
+
+
 
  Map<String,dynamic> toMap(){
   return {
@@ -35,9 +41,15 @@ class Student {
     "Country" : Nationality,
     "HouseReservation" : HouseReservation,
     "Payement" : Payment,
-    "DepotDoc" : DepotDoc,
+   // "DepotDoc" : NomDocument,
 
 
+  };
+ }
+
+ Map<String,dynamic> StoreNomDoc(){
+  return{
+   "DepotDoc" : NomDocument
   };
  }
 

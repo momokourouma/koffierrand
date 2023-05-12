@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:monprojetfinal/model/Student.dart';
@@ -16,6 +17,10 @@ final _db = FirebaseFirestore.instance;
 
 addStudent(Student student){
   _db.collection("students").doc(_useruid).set(student.toMap());
+}
+
+addNomDocument(Student student){
+  _db.collection("students").doc(_useruid).update(student.StoreNomDoc());
 }
 
 
