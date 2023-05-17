@@ -15,17 +15,17 @@ final _db = FirebaseFirestore.instance;
 
 
 
-addStudent(Student student){
-  _db.collection("students").doc(_useruid).set(student.toMap());
+addStudent(Student student) async{
+   await _db.collection("students").doc(_useruid).set(student.toMap());
 }
 
-addNomDocument(Student student){
-  _db.collection("students").doc(_useruid).update(student.StoreNomDoc());
+addNomDocument(Student student) async{
+   await _db.collection("students").doc(_useruid).update(student.StoreNomDoc());
 }
 
 
 UploadDoc(String fileName,String? FilePath) async{
-  final storage = FirebaseStorage.instance.ref();
+  final storage =  FirebaseStorage.instance.ref();
   final image = storage.child("Documents");
   final imageRef = image.child('$_usermail/${fileName}');
   final pathfile = FilePath;
@@ -35,6 +35,36 @@ UploadDoc(String fileName,String? FilePath) async{
   print(pathfile);
   await imageRef.putFile(file);
 }
+
+  Future<String> getFileUrl(String filename) async{
+   final url =  await FirebaseStorage.instance.ref().child("Documents").child('$_usermail')
+      .child('$filename')
+       .getDownloadURL();
+   return url;
+}
+
+AiportPickup( Student student) async{
+  await _db.collection("students").doc(_useruid).update(student.AiportPickup());
+}
+
+Future<List> FetchHouseData() async{
+  QuerySnapshot data = await _db.collection("Logement").get();
+  final alldata = data.docs.map((doc) => doc.data()).toList();
+  return alldata;
+}
+
+Future<List> getUrl() async{
+  List<String> urls =[];
+  final ref = FirebaseFirestore.instance.collection('Logement');
+  final data = await ref.get();
+  final listdata = data.docs.map((doc) => doc.data()).toList();
+
+
+  return listdata;
+}
+
+
+
 
 
 }

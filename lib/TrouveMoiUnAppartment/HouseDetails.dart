@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:monprojetfinal/Service/DatabaseService.dart';
 
 class HouseDetails extends StatefulWidget {
   const HouseDetails({Key? key}) : super(key: key);
@@ -11,6 +14,8 @@ class HouseDetails extends StatefulWidget {
 }
 
 class _HouseDetailsState extends State<HouseDetails> {
+
+  DataBaseService service = DataBaseService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,17 +23,6 @@ class _HouseDetailsState extends State<HouseDetails> {
       child: Column(
         children: [
           Container(
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 210,left: 10),
-                  child: Icon(FontAwesomeIcons.circleChevronLeft,
-                    color: Colors.black,
-                    size: 30,
-                  ),
-                ),
-              ],
-            ),
             height: 400,
             width: 500,
             decoration: const BoxDecoration(
@@ -36,6 +30,17 @@ class _HouseDetailsState extends State<HouseDetails> {
               image: AssetImage("assets/image/rent1.jpg"),
               fit: BoxFit.cover,
             )),
+            child:  Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 210,left: 10),
+                  child: Icon(FontAwesomeIcons.circleChevronLeft,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ),
+              ],
+            ),
           ),
           Container(
             height: 470,
@@ -143,7 +148,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                                 width: 150,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(image: AssetImage("assets/houses/int4.jpg"),
+                                    image: const DecorationImage(image: AssetImage("assets/houses/int4.jpg"),
                                         fit: BoxFit.cover)
                                 ),
                               ),
@@ -156,20 +161,31 @@ class _HouseDetailsState extends State<HouseDetails> {
                           ),
                         ),
 
-                       SizedBox(height: 60,),
+                       SizedBox(height: 40,),
 
-                        MaterialButton(onPressed: (){},
-                          color: Colors.blue,
-                          elevation: 15,
+                        MaterialButton(onPressed: () async{
+                          List finalurl =[];
+                        final url = await service.getUrl();
+                        final test= url.asMap();
+
+
+
+
+
+
+
+                        },
+                          color: Colors.black,
+                          elevation: 20,
                           shape: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)
                           ),
 
-                          padding: EdgeInsets.symmetric(horizontal: 50),
+                          padding: EdgeInsets.symmetric(horizontal: 50,vertical: 10),
                         child: Text("Reservez",
                             style: GoogleFonts.lato(
-                              color: Colors.white,
-                              fontSize: 20,
+                              color: Colors.blue,
+                              fontSize: 25,
                             ) ),)
                       ],
                     )

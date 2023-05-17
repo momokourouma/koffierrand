@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       //home:AuthVerify(),
-      home:FileUpload(),
+      home:HouseDetails(),
 
     );
   }

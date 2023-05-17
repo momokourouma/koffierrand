@@ -7,7 +7,32 @@ class Logement{
   late String? UserInfo;
   late int? price;
   late bool? paid;
+  late List<String>? InteriorImage;
 
 
-  Logement();
+  Logement({
+    this.Distance_de_kofi,
+    this.Quartier,
+    this.ImageUrl,
+    this.paid = false,
+    this.price,
+    this.InteriorImage,
+    this.Reserved = false,
+    this.UserInfo,
+
+});
+
+  Map<String,dynamic> toMap(){
+    return{
+      "Distance_de_kofi" : Distance_de_kofi,
+      "Quartier" : Quartier,
+      "ImageUrl" : ImageUrl,
+      "Paid" : paid,
+      "price" : price,
+      "Userinfo" : UserInfo,
+      "interiorImage" : InteriorImage,
+      "Reserved" : Reserved
+
+    };
+  }
 }

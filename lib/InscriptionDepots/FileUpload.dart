@@ -461,20 +461,42 @@ class _FileUploadState extends State<FileUpload> {
 
             MaterialButton(onPressed: () async{
 
-              List<String>? momo = [];
-              for( var filenames in myfiles){
-                momo.add(filenames.files.first.name);
-              }
-              print(momo.toSet().toList());
+              List<String>? url = [];
+              List<String>? urlR = [];
 
-             /* Student newStudent = Student.Doc();
+
+            /*  try{
+                for(var files in myfiles.toSet().toList()){
+                   url.add(files.files.first.name);
+                }
+                for(var urls in url.toSet().toList()){
+                  var urlLink = await service.getFileUrl(urls);
+                  urlR.add(urlLink);
+                }
+                print(urlR);
+
+
+
+              }on FirebaseException catch(e){
+                print(e.message);
+              } */
+
+
+
+
+
+
+
+
+
+             /* Student newStudent = Student();
               newStudent.NomDocument = momo;
               service.addNomDocument(newStudent); */
 
 
 
 
-            /* if(myfiles!.isEmpty || myfiles!.length < 4){
+             if(myfiles!.isEmpty || myfiles!.length < 4){
                showDialog(context: context,
                    builder: (contex){
                      return AlertDialog(
@@ -486,14 +508,29 @@ class _FileUploadState extends State<FileUpload> {
                try{
                  for (var p in myfiles!.toSet().toList()){
                    service.UploadDoc(p.files.first.name, p.files.first.path);
-
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
-
                  }
-               } catch(e){
-                 print(e);
+                 for(var files in myfiles.toSet().toList()){
+                   url.add(files.files.first.name);
+                 }
+                 for(var urls in url.toSet().toList()){
+                   var urlLink = await service.getFileUrl(urls);
+                   urlR.add(urlLink);
+                 }
+
+
+
+
+                 Student newStudent = Student();
+                 newStudent.NomDocument = urlR.toSet().toList();
+                 service.addNomDocument(newStudent);
+
+
+               } on FirebaseException catch(e){
+                 print(e.message);
                }
-             } */
+
+               Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+             }
 
 
 

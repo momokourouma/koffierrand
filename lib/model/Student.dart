@@ -13,7 +13,7 @@ class Student {
  late bool? HouseReservation;
  late List<String>? NomDocument;
 
-   Student.Doc(){}
+
 
   Student({
    this.Matricule = null,
@@ -50,6 +50,12 @@ class Student {
  Map<String,dynamic> StoreNomDoc(){
   return{
    "DepotDoc" : NomDocument
+  };
+ }
+
+ Map<String,dynamic> AiportPickup(){
+  return{
+   "AirportPickup" : PickAirport,
   };
  }
 

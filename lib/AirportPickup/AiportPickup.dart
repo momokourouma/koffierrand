@@ -1,10 +1,15 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:monprojetfinal/Service/DatabaseService.dart';
+import 'package:monprojetfinal/model/Student.dart';
 
 import '../LoginPages/LoginPage.dart';
 import '../ClientNavbar/MyNav.dart';
@@ -17,6 +22,15 @@ class Pickup extends StatefulWidget {
 }
 
 class _PickupState extends State<Pickup> {
+
+  TextEditingController _PaysDepart = TextEditingController();
+  TextEditingController _vol = TextEditingController();
+  TextEditingController  _dateArrive = TextEditingController();
+  final TextEditingController _HeureArrive = TextEditingController();
+
+  DataBaseService service = DataBaseService();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +76,23 @@ class _PickupState extends State<Pickup> {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: TextFormField(
+                  readOnly: true,
+                  controller: _PaysDepart,
+                  onTap: (){
+                    showCountryPicker(
+                        countryListTheme: const CountryListThemeData(
+                            backgroundColor: Colors.grey,
+                            textStyle: TextStyle(
+                              color: Colors.white,
+                            )),
+                        context: context,
+                        showPhoneCode: false,
+                        onSelect: (Country t) {
+                          setState(() {
+                            _PaysDepart.text = t.name;
+                          });
+                        });
+                  },
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -103,6 +134,7 @@ class _PickupState extends State<Pickup> {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: TextFormField(
+                  controller: _vol,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -144,10 +176,26 @@ class _PickupState extends State<Pickup> {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: TextFormField(
+                  controller: _dateArrive,
+                  readOnly: true,
+                  onTap: ()async{
+                    DateTime? _datepicker = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950),
+                        lastDate: DateTime(2100));
+
+                    if (_datepicker != null) {
+                      String formatDate =
+                      DateFormat("yyyy-MM-dd").format(_datepicker);
+                      setState(() {
+                        _dateArrive.text = formatDate;
+                      });
+                    }
+                  },
 
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-
                     hintText: "Date arrive",
                     hintStyle: const TextStyle(
                       fontSize: 14,
@@ -189,6 +237,17 @@ class _PickupState extends State<Pickup> {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: TextFormField(
+                  readOnly: true,
+                  controller: _HeureArrive,
+                  onTap: () async{
+                    var time = await showTimePicker(context: context,
+                        initialTime: TimeOfDay.now());
+                    if(time != null){
+                      setState(() {
+                        _HeureArrive.text = "${time.hour}:${time.minute}";
+                      });
+                    }
+                  },
 
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
@@ -236,6 +295,23 @@ class _PickupState extends State<Pickup> {
 
               MaterialButton(
                 onPressed: (){
+
+                  Map<String,dynamic> pickupDetails = {
+                    "PaysDepart" : _PaysDepart.text.trim(),
+                    "vol" : _vol.text.trim(),
+                     "DateArrive" : _dateArrive.text.trim(),
+                     "HeureArrive" : _HeureArrive.text.trim()
+                  };
+
+                 try{
+                   Student newStudent = Student();
+                   newStudent.PickAirport = pickupDetails;
+                   service.AiportPickup(newStudent);
+                 }on FirebaseException catch(e){
+                   print(e.message);
+                 }
+
+
 
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>MyNav()));
                 },
