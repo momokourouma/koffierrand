@@ -10,7 +10,8 @@ import 'package:monprojetfinal/InscriptionDepots/DepotDoc.dart';
 import 'package:monprojetfinal/LoginPages/LoginPage.dart';
 import 'package:monprojetfinal/Information/PageInfo.dart';
 import 'package:monprojetfinal/ServicesPayment/Payment.dart';
-import 'package:monprojetfinal/TrouveMoiUnAppartment/findMeAplace.dart';
+import 'package:monprojetfinal/TrouveMoiUnAppartment/FindMePlace.dart';
+
 
 class MyNav extends StatefulWidget {
   const MyNav({Key? key}) : super(key: key);
@@ -314,7 +315,7 @@ class _MyNavState extends State<MyNav> {
                       onTap: () {
                         //
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => FindMe()));
+                            MaterialPageRoute(builder: (context) => FindMePlace()));
                       },
                       child: Container(
                         height: 150,

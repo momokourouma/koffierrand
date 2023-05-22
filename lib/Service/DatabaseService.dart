@@ -92,7 +92,7 @@ Future<List> getLogmentID() async{
 Future<DocumentSnapshot<Map<String, dynamic>>> getElementbyId(String id) async{
 
   var collection = await FirebaseFirestore.instance.collection("Logement").doc(id).get();
-  print(id);
+
 
  return collection;
 

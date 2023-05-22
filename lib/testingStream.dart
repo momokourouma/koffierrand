@@ -73,7 +73,9 @@ class _testingState extends State<testing> {
                               children: [
                                 MaterialButton(onPressed: () async{
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>HouseDetails( LogementId: LogmentId[index],ImageUrl:data["imageUrl"][0]["downloadURL"] ,)));
+                                  DocumentSnapshot<Map<String, dynamic>> test = await service.getElementbyId("EcHVjdAPSJ7iDTjvA5uO");
                                   print(LogmentId);
+                                  print("${test!["price"]}");
                                 },
 
                                   elevation: 20,

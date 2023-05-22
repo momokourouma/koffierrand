@@ -19,13 +19,13 @@ import 'package:monprojetfinal/Information/PageInfo.dart';
 import 'package:monprojetfinal/ServicesPayment/Payment.dart';
 import 'package:monprojetfinal/Information/ProgrammeAcademique.dart';
 import 'package:monprojetfinal/LoginPages/Register.dart';
-import 'package:monprojetfinal/TrouveMoiUnAppartment/findMeAplace.dart';
 import 'package:monprojetfinal/myclicp.dart';
 import 'package:monprojetfinal/ServicesPayment/paymentform.dart';
 import 'package:monprojetfinal/testingStream.dart';
 import 'InscriptionDepots/FileUploadBTS.dart';
 import 'InscriptionDepots/PaymentRegister.dart';
 
+import 'TrouveMoiUnAppartment/FindMePlace.dart';
 import 'firebase_options.dart';
 
 
@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home:AuthVerify(),
-      home:testing(),
+      home:AuthVerify(),
+     // home:FindMePlace(),
 
 
       /*child: ListView(
