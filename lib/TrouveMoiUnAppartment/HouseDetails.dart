@@ -7,7 +7,9 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
 
 class HouseDetails extends StatefulWidget {
-  const HouseDetails({Key? key}) : super(key: key);
+  const HouseDetails({Key? key, required this.LogementId, required this.ImageUrl }) : super(key: key);
+  final String LogementId;
+  final String ImageUrl;
 
   @override
   State<HouseDetails> createState() => _HouseDetailsState();
@@ -15,8 +17,27 @@ class HouseDetails extends StatefulWidget {
 
 class _HouseDetailsState extends State<HouseDetails> {
 
+
+
   DataBaseService service = DataBaseService();
+
+
+  Map<String,dynamic> HouseInfo = Map<String,dynamic>();
+
+getHouseInfo() async{
+  HouseInfo = (await service.getElementbyId(widget.LogementId)) as Map<String, dynamic>;
+}
+
+
+
+
   @override
+  initState(){
+    super.initState();
+    getHouseInfo();
+
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
@@ -25,12 +46,13 @@ class _HouseDetailsState extends State<HouseDetails> {
           Container(
             height: 400,
             width: 500,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage("assets/image/rent1.jpg"),
-              fit: BoxFit.cover,
+              image: NetworkImage(widget.ImageUrl),
+                  //image: AssetImage("assets/houses/int1.jpg"),
+              fit: BoxFit.fill,
             )),
-            child:  Row(
+            child:  const Row(
               children: [
                 Padding(
                   padding: EdgeInsets.only(bottom: 210,left: 10),
@@ -49,15 +71,75 @@ class _HouseDetailsState extends State<HouseDetails> {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10,),
-
-
-
-                SizedBox(height: 10,),
+                const SizedBox(height: 20,),
                 
                 Center(
                     child: Column(
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                           Container(
+                             height: 50,
+                             width: 50,
+
+                             child: Column(
+                               children: [
+                                 Icon(FontAwesomeIcons.dollarSign,color: Colors.blue,),
+                                 SizedBox(height: 5),
+                                 Text("",
+                                     style:GoogleFonts.lato(
+                                       color: Colors.white,
+
+                                     ) ),
+                               ],
+                             ),
+
+                           ),
+                           SizedBox(width: 40,),
+                           Container(
+                             height: 50,
+                             width: 90,
+
+                             child: Column(
+                               children: [
+                                 Icon(FontAwesomeIcons.locationDot,color: Colors.blue,),
+                                 SizedBox(height: 5),
+                                 Text("${HouseInfo["price"]}",
+                                     textAlign: TextAlign.center,
+                                     style:GoogleFonts.lato(
+                                       color: Colors.white,
+                                       fontSize: 15
+                                     ) ),
+                               ],
+                             ),
+
+                           ),
+                           SizedBox(width: 40,),
+                           Container(
+                             height: 50,
+                             width: 50,
+
+                             child: Column(
+                               children: [
+                                 const Icon(FontAwesomeIcons.mapLocation,color: Colors.blue,),
+                                 SizedBox(height: 5),
+                                 Text("",
+                                     textAlign: TextAlign.center,
+                                     style:GoogleFonts.lato(
+
+                                       color: Colors.white,
+                                       fontSize: 15,
+                                     ) ),
+                               ],
+                             ),
+
+                           ),
+
+                         ],
+                        ),
+                        
+                        SizedBox(height: 5,),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Row(
@@ -161,13 +243,12 @@ class _HouseDetailsState extends State<HouseDetails> {
                           ),
                         ),
 
-                       SizedBox(height: 40,),
+                       SizedBox(height: 20,),
 
                         MaterialButton(onPressed: () async{
-                          List finalurl =[];
-                        final url = await service.getUrl();
-                        final test= url.asMap();
 
+                       // var test = await service.getElementbyId(widget.LogementId);
+                      //  print(test["price"]);
 
 
 
@@ -204,3 +285,6 @@ class _HouseDetailsState extends State<HouseDetails> {
     ));
   }
 }
+
+
+

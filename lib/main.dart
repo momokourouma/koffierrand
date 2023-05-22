@@ -22,11 +22,10 @@ import 'package:monprojetfinal/LoginPages/Register.dart';
 import 'package:monprojetfinal/TrouveMoiUnAppartment/findMeAplace.dart';
 import 'package:monprojetfinal/myclicp.dart';
 import 'package:monprojetfinal/ServicesPayment/paymentform.dart';
-import 'package:monprojetfinal/testingStack.dart';
-
-
+import 'package:monprojetfinal/testingStream.dart';
 import 'InscriptionDepots/FileUploadBTS.dart';
 import 'InscriptionDepots/PaymentRegister.dart';
+
 import 'firebase_options.dart';
 
 
@@ -49,8 +48,19 @@ class MyApp extends StatelessWidget {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       //home:AuthVerify(),
-      home:HouseDetails(),
+      home:testing(),
 
+
+      /*child: ListView(
+                        shrinkWrap: true,
+                        children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                        return ListTile(
+                          title: Text("${data["imageUrl"][0]["downloadURL"]}"),
+                          //subtitle: Text(data['price']),
+                        );
+                      }).toList(),
+                    ), */
     );
   }
 }

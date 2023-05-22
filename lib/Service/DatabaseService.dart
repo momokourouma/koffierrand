@@ -54,13 +54,49 @@ Future<List> FetchHouseData() async{
 }
 
 Future<List> getUrl() async{
-  List<String> urls =[];
-  final ref = FirebaseFirestore.instance.collection('Logement');
-  final data = await ref.get();
-  final listdata = data.docs.map((doc) => doc.data()).toList();
+  List finalurl =[];
+  List downloadURL = [];
+  final ref = await FirebaseFirestore.instance.collection('Logement').get();
+  List listdata =  ref.docs.toList();
+
+  var url =  listdata;
+  for(var x in url){
+    finalurl.add(x["imageUrl"][0]);
+  }
+
+  var test = finalurl.asMap();
+  test.forEach((key, value) {
+    downloadURL.add(value["downloadURL"]);
+  });
 
 
-  return listdata;
+  print(downloadURL);
+
+
+  return downloadURL;
+}
+
+Future<List> getLogmentID() async{
+  List idLogement =[];
+  var collection = await FirebaseFirestore.instance.collection("Logement").get();
+  for(var data in collection.docs){
+    idLogement.add(data.id);
+  }
+ // print(idLogement);
+ // print(idLogement.runtimeType);
+  return idLogement;
+
+
+}
+
+Future<DocumentSnapshot<Map<String, dynamic>>> getElementbyId(String id) async{
+
+  var collection = await FirebaseFirestore.instance.collection("Logement").doc(id).get();
+  print(id);
+
+ return collection;
+
+
 }
 
 
