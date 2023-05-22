@@ -22,10 +22,10 @@ class _HouseDetailsState extends State<HouseDetails> {
   DataBaseService service = DataBaseService();
 
 
-  Map<String,dynamic> HouseInfo = Map<String,dynamic>();
+ DocumentSnapshot<Map<String,dynamic>> HouseInfo ;
 
 getHouseInfo() async{
-  HouseInfo = (await service.getElementbyId(widget.LogementId)) as Map<String, dynamic>;
+  HouseInfo = await service.getElementbyId(widget.LogementId);
 }
 
 
