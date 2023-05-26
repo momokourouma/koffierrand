@@ -99,7 +99,15 @@ Future<DocumentSnapshot<Map<String, dynamic>>> getElementbyId(String id) async{
 
 }
 
+Future<DocumentSnapshot<Map<String, dynamic>>> getPaymentState(String id) async{
 
+  var collection = await FirebaseFirestore.instance.collection("students").doc(id).get();
+
+
+  return collection;
+
+
+}
 
 
 

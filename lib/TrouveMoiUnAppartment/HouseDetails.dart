@@ -7,6 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
+import 'package:monprojetfinal/ServicesPayment/Payment.dart';
+import 'package:monprojetfinal/ServicesPayment/PaymentChecked.dart';
 
 class HouseDetails extends StatefulWidget {
   const HouseDetails({Key? key, required this.LogementId, required this.ImageUrl }) : super(key: key);
@@ -27,7 +29,9 @@ class _HouseDetailsState extends State<HouseDetails> {
   }
 
   DataBaseService service = DataBaseService();
-
+  Stream<DocumentSnapshot<Map<String, dynamic>>> fetchDataById(String id)  {
+    return  FirebaseFirestore.instance.collection("Logement").doc(id).snapshots();
+  }
 
    String quartier = "";
    int price = 0;
@@ -76,7 +80,7 @@ getHouseInfo() async{
               ),
             ),
             Container(
-              height: 510,
+              height: 650,
               decoration: BoxDecoration(
                 color: HexColor("#2C3333"),
               ),
@@ -199,68 +203,91 @@ getHouseInfo() async{
                           ),
                           SizedBox(height: 10,),
                           Container(
-                            height: 125,
+                            height: 250,
                             width: 360,
 
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: [
+                            child: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                              stream: fetchDataById(widget.LogementId),
+                              builder:(BuildContext context, AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot){
 
-                                Container(
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(image: AssetImage("assets/houses/int1.jpg"),
-                                          fit: BoxFit.cover)
-                                  ),
-                                ),
-
-                                SizedBox(width: 15,),
-
-                                Container(
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(image: AssetImage("assets/houses/int2.jpg"),
-                                          fit: BoxFit.cover)
-                                  ),
-                                ),
-                                SizedBox(width: 15,),
-
-                                Container(
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(image: AssetImage("assets/houses/int3.jpg"),
-                                          fit: BoxFit.cover)
-                                  ),
-                                ),
-                                SizedBox(width: 15,),
-
-                                Container(
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: const DecorationImage(image: AssetImage("assets/houses/int4.jpg"),
-                                          fit: BoxFit.cover)
-                                  ),
-                                ),
+                                if (snapshot.hasError) {
+                                  return Text('Error: ${snapshot.error}');
+                                }
+                                if (snapshot.connectionState == ConnectionState.waiting) {
+                                  return Text('Loading...');
+                                }
+                                List urls = [];
+                                var documents = snapshot.data!.data();
+                                var fieldvalue = documents!["interior"];
+                                for(var x in fieldvalue ){
+                                  urls.add(x["downloadURL"]);
+                                }
 
 
 
+                                if (!snapshot.hasData || !snapshot.data!.exists) {
+                                  return Text('Document does not exist');
+                                }
+                                return ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: urls.length,
+                                    itemBuilder: (BuildContext context,int index){
+                                      DocumentSnapshot document = snapshot.data!;
+                                      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+
+                                      return Column(
+                                        children: [
+                                          Container(
+                                            height:200,
+                                            width: 300,
+
+                                            child: ListView(
+                                             //scrollDirection: Axis.horizontal,
+                                              children: [
+                                                Padding(padding: EdgeInsets.all(8),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                  ),
+                                                  
+                                                  height: 240,
+
+                                                    child: Image(image: NetworkImage("${data["interior"][index]["downloadURL"]}"),fit: BoxFit.cover,)
+                                                )
+                                                ),
+                                              ],
+                                            ),
+                                          ),
 
 
-                              ],
-                            ),
+
+                                          /*  Center(
+                                  child: Image(image: NetworkImage(
+                                      "${data["interior"][]["downloadURL"]}")),
+                                ),*/
+                                        ],
+                                      );
+
+
+
+
+
+
+                                    });
+
+
+                              },
+                            )
                           ),
 
-                          SizedBox(height: 20,),
+                          //SizedBox(height: 20,),
 
                           MaterialButton(onPressed: () async{
 
                             // var test = await service.getElementbyId(widget.LogementId);
                             //  print(test["price"]);
 
+                             Navigator.push(context, MaterialPageRoute(builder: (context)=>const Payment()));
 
 
 

@@ -11,6 +11,7 @@ import 'package:monprojetfinal/InscriptionDepots/PaymentValidation.dart';
 import 'package:monprojetfinal/LoginPages/AuthVerify.dart';
 import 'package:monprojetfinal/LoginPages/ForgotPassword.dart';
 import 'package:monprojetfinal/ServicesPayment/PaymentChecked.dart';
+import 'package:monprojetfinal/TestingInterior.dart';
 import 'package:monprojetfinal/TrouveMoiUnAppartment/HouseDetails.dart';
 import 'package:monprojetfinal/Information/Infocontact.dart';
 import 'package:monprojetfinal/LoginPages/LoginPage.dart';
@@ -48,7 +49,9 @@ class MyApp extends StatelessWidget {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
       home:AuthVerify(),
-     // home:FindMePlace(),
+     //home:FindMePlace(),
+      //home: TestingInterior(),
+      //home: MyNav(),
 
 
       /*child: ListView(

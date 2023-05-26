@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,6 +30,22 @@ class _PickupState extends State<Pickup> {
   final TextEditingController _HeureArrive = TextEditingController();
 
   DataBaseService service = DataBaseService();
+
+  bool? payment = null;
+
+  getPayment() async{
+    DocumentSnapshot<Map<String, dynamic>> document = await service.getPaymentState(FirebaseAuth.instance.currentUser!.uid);
+    setState(() {
+     payment = document.data()?["Payement"];
+    });
+  }
+
+  @override
+  initState(){
+    super.initState();
+   getPayment();
+
+  }
 
 
   @override
@@ -295,26 +312,43 @@ class _PickupState extends State<Pickup> {
 
               MaterialButton(
                 onPressed: (){
+                  print(payment);
+                  if(payment == false){
+                    showDialog(context: context,
+                        builder: (contex){
+                          return AlertDialog(
+                            content: Text("Pour devez vous inscrire pour profiter de ce service"),
+                            backgroundColor: Colors.white,
+                          );
+                        });
+                  }else{
+                    Map<String,dynamic> pickupDetails = {
+                      "PaysDepart" : _PaysDepart.text.trim(),
+                      "vol" : _vol.text.trim(),
+                      "DateArrive" : _dateArrive.text.trim(),
+                      "HeureArrive" : _HeureArrive.text.trim()
+                    };
 
-                  Map<String,dynamic> pickupDetails = {
-                    "PaysDepart" : _PaysDepart.text.trim(),
-                    "vol" : _vol.text.trim(),
-                     "DateArrive" : _dateArrive.text.trim(),
-                     "HeureArrive" : _HeureArrive.text.trim()
-                  };
-
-                 try{
-                   Student newStudent = Student();
-                   newStudent.PickAirport = pickupDetails;
-                   service.AiportPickup(newStudent);
-                 }on FirebaseException catch(e){
-                   print(e.message);
-                 }
+                    try{
+                      Student newStudent = Student();
+                      newStudent.PickAirport = pickupDetails;
+                      service.AiportPickup(newStudent);
+                    }on FirebaseException catch(e){
+                      print(e.message);
+                    }
 
 
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MyNav()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyNav()));
+
+                  }
+
+                  
+
+
                 },
+
+
                 height: 45,
                 color: Colors.black,
                 elevation: 12,

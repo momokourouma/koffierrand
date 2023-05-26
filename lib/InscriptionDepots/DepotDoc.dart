@@ -13,6 +13,7 @@ import 'package:monprojetfinal/AppLogic/Functions/InputValidator.dart';
 import 'package:monprojetfinal/InscriptionDepots/FileUpload.dart';
 import 'package:monprojetfinal/InscriptionDepots/FileUploadMaster.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
+import 'package:monprojetfinal/ServicesPayment/Payment.dart';
 import 'package:monprojetfinal/model/Student.dart';
 
 import 'FileUploadBTS.dart';
@@ -408,7 +409,7 @@ class _DepotDocState extends State<DepotDoc> {
                           print(e.toString());
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (
-                            context) => FileUpload()));
+                            context) => Payment()));
 
                       }
                     }
