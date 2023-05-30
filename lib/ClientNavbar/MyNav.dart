@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:badges/badges.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -37,16 +37,11 @@ class _MyNavState extends State<MyNav> {
               style: GoogleFonts.lato(color: Colors.white, fontSize: 30)),
         ),
         actions: [
-          /* Padding(
-            padding: EdgeInsets.all(15),
-            child: badges.Badge(
-              badgeContent: Text("10"),
-              child: Icon(FontAwesomeIcons.bell,
-                  size: 30,
-                color: Colors.white,
-              ),
-            ),
-          ), */
+           Padding(
+            padding: EdgeInsets.only(top: 16),
+            child: IconButton(onPressed: (){},
+                icon: Icon(FontAwesomeIcons.bell),iconSize: 27),
+          ),
           Padding(
             padding: EdgeInsets.all(15),
             child: IconButton(
