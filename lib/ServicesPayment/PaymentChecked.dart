@@ -1,9 +1,9 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
+import 'package:monprojetfinal/ClientNavbar/MyNav.dart';
 
 class PaymentChecked extends StatefulWidget {
   const PaymentChecked({Key? key}) : super(key: key);
@@ -13,13 +13,22 @@ class PaymentChecked extends StatefulWidget {
 }
 
 class _PaymentCheckedState extends State<PaymentChecked> {
+
+  @override
+  void initState() {
+    super.initState();
+    myscren();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor("#2C3333"),
       body: Column(
         children: [
-          SizedBox(height: 100,),
+          const SizedBox(height: 100,),
 
           Center(
               child: Lottie.asset("assets/PaymentValidationAssets/validation.json",height: 300)
@@ -38,5 +47,10 @@ class _PaymentCheckedState extends State<PaymentChecked> {
         ],
       ),
     );
+  }
+  Future<void> myscren() async {
+    await Future.delayed(const Duration(seconds: 3 ));
+    Navigator.pushReplacement(this.context, MaterialPageRoute(builder:(context) => MyNav()));
+    //await Future.delayed(Duration(seconds: 10 ));
   }
 }

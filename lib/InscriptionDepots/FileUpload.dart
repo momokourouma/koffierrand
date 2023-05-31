@@ -524,12 +524,14 @@ class _FileUploadState extends State<FileUpload> {
                  newStudent.NomDocument = urlR.toSet().toList();
                  service.addNomDocument(newStudent);
 
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+
 
                } on FirebaseException catch(e){
                  print(e.message);
                }
 
-               Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+
              }
 
 

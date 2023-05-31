@@ -11,6 +11,7 @@ import 'package:monprojetfinal/InscriptionDepots/PaymentValidation.dart';
 import 'package:monprojetfinal/LoginPages/AuthVerify.dart';
 import 'package:monprojetfinal/LoginPages/ForgotPassword.dart';
 import 'package:monprojetfinal/ServicesPayment/PaymentChecked.dart';
+import 'package:monprojetfinal/ServicesPayment/Paymentbeta.dart';
 import 'package:monprojetfinal/TestingInterior.dart';
 import 'package:monprojetfinal/TrouveMoiUnAppartment/HouseDetails.dart';
 import 'package:monprojetfinal/Information/Infocontact.dart';
@@ -48,10 +49,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:AuthVerify(),
+      //home:AuthVerify(),
      //home:FindMePlace(),
       //home: TestingInterior(),
-      //home: MyNav(),
+      home: PaymentBeta(),
 
 
       /*child: ListView(

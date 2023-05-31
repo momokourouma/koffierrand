@@ -374,13 +374,13 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                 try{
                   for (var p in myfiles!.toSet().toList()){
                     service.UploadDoc(p.files.first.name, p.files.first.path);
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
-
                   }
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
                 } catch(e){
                   print(e);
                 }
               }
+
 
 
 

@@ -55,6 +55,9 @@ class _MyNavState extends State<MyNav> {
                             child: Column(
                               children: [
                                 CircleAvatar(
+                                  backgroundColor:
+                                      Colors.white.withOpacity(0.3),
+                                  radius: 45,
                                   child: Text(
                                     "MK",
                                     style: GoogleFonts.lato(
@@ -62,9 +65,6 @@ class _MyNavState extends State<MyNav> {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  backgroundColor:
-                                      Colors.white.withOpacity(0.3),
-                                  radius: 45,
                                 ),
                                 SizedBox(
                                   height: 10,

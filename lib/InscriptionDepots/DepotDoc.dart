@@ -409,7 +409,7 @@ class _DepotDocState extends State<DepotDoc> {
                           print(e.toString());
                         }
                         Navigator.push(context, MaterialPageRoute(builder: (
-                            context) => Payment()));
+                            context) => FileUpload()));
 
                       }
                     }
