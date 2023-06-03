@@ -1,36 +1,64 @@
-import 'dart:convert';
 
+import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:monprojetfinal/Service/DatabaseService.dart';
-import 'package:monprojetfinal/ServicesPayment/PaymentChecked.dart';
+import 'package:monprojetfinal/model/Logement.dart';
 
+import '../Service/DatabaseService.dart';
 import '../model/Student.dart';
+import 'PaymentChecked.dart';
 
-class PaymentBeta extends StatefulWidget {
-  const PaymentBeta({Key? key}) : super(key: key);
+class PaymentHouse extends StatefulWidget {
+  const PaymentHouse({Key? key,required this.LogementId}) : super(key: key);
+  final String LogementId;
 
   @override
-  State<PaymentBeta> createState() => _PaymentBetaState();
+  State<PaymentHouse> createState() => _PaymentHouseState();
 }
 
-class _PaymentBetaState extends State<PaymentBeta> {
+class _PaymentHouseState extends State<PaymentHouse> {
+  @override
+  initState(){
+    super.initState();
+    getHouseInfo();
+  }
+
   TextEditingController firstname = TextEditingController();
   TextEditingController lastname = TextEditingController();
-   TextEditingController email = TextEditingController();
-   TextEditingController numeroCompte = TextEditingController();
-   TextEditingController montant = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController numeroCompte = TextEditingController();
+  TextEditingController montant = TextEditingController();
 
-   List type_paiement = [
-     "Logement",
-     "Inscription"
-   ];
-   String currentv = "Inscription";
+  DataBaseService service = DataBaseService();
+
+  final usermail = FirebaseAuth.instance.currentUser!.email;
+  final user = FirebaseAuth.instance.currentUser;
+  List type_paiement = [
+    "Logement",
+    "Inscription"
+  ];
+  String currentv = "Inscription";
+  String name = "";
+  bool paid = false;
+
+
+
+  getHouseInfo() async{
+    //DocumentSnapshot<Map<String, dynamic>> document = await service.getElementbyId(widget.LogementId);
+    DocumentSnapshot<Map<String, dynamic>> document = await service.getElementbyId("EcHVjdAPSJ7iDTjvA5uO");
+    setState(() {
+      name = document.data()?["imageUrl"][0]["name"];
+      paid = document.data()?["Paid"];
+    });
+
+
+  }
 
 
 
@@ -58,7 +86,7 @@ class _PaymentBetaState extends State<PaymentBeta> {
                     prefixIcon: Icon(FontAwesomeIcons.circleUser),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.black,
                           width: 2,
                         )),
@@ -190,7 +218,7 @@ class _PaymentBetaState extends State<PaymentBeta> {
                           fillColor: Colors.black,
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.black,
                                 width: 2,
                               )),
@@ -202,9 +230,9 @@ class _PaymentBetaState extends State<PaymentBeta> {
                         return DropdownMenuItem(
                           value: name,
                           child: Text('$name',
-                          style: GoogleFonts.lato(
-                            color: Colors.black
-                          )),
+                              style: GoogleFonts.lato(
+                                  color: Colors.black
+                              )),
                         );
                       }).toList(),
                       onChanged: (value) {
@@ -215,7 +243,7 @@ class _PaymentBetaState extends State<PaymentBeta> {
                 ),
 
 
-               /* Padding(
+                /* Padding(
                   padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
                   child: TextFormField(
 
@@ -244,14 +272,27 @@ class _PaymentBetaState extends State<PaymentBeta> {
                   height: 40,
                   child: MaterialButton(onPressed: () async{
 
+                    if(paid == true){
+                      return showDialog(context: context,
+                          builder: (context){
+                        return AlertDialog(
+                          content: Text("Maison deja reservez"),
+                        );
+
+                          });
+                    }
+
                     final url = "http://192.168.100.85:8000/depot/${montant.text.trim()}";
+                    Logement newLogement = Logement();
                     Student newStudent = Student();
                     DataBaseService service = DataBaseService();
+
+
                     var data = {
                       "NumeroCompte" : numeroCompte.text.trim()
 
                     };
-                    //final sending = await http.post(Uri.parse("http://192.168.100.85:8000/depot/${montant.text.trim()}"));
+
                     final sending = await http.post(
                       Uri.parse(url),
                       body: jsonEncode(data),
@@ -261,22 +302,30 @@ class _PaymentBetaState extends State<PaymentBeta> {
                     );
                     final result = sending.body;
                     final message = jsonDecode(sending.body);
-                    if(message["valeur"] == "depot fait avec succes"){
+                  /*  if(message["valeur"] == "depot fait avec succes"){
 
-                      newStudent.Payment = true;
-                      service.Payment(newStudent);
-                     Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentChecked()));
+                      newLogement.UserInfo = usermail;
+                      newLogement.paid = true;
+                      newLogement.Reserved = true;
+
+                      newStudent.HouseReservation = name;
+                      service.houseReservation(newStudent);
+                      service.Logementfees(newLogement,widget.LogementId);
+
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentChecked()));
                     }
                     else{
                       return showDialog(context: context,
                           builder: (BuildContext context){
-                           return AlertDialog(
-                             content: Text("Numero de compte errone"),
-                           );
-                        
+                            return AlertDialog(
+                              content: Text("Numero de compte errone"),
+                            );
+
                           });
-    
-                    }
+
+
+                    }; */
 
 
 
@@ -287,7 +336,8 @@ class _PaymentBetaState extends State<PaymentBeta> {
 
 
 
-                  },
+
+                 },
                     color: Colors.black,
                     shape: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)

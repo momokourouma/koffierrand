@@ -1,4 +1,4 @@
-class Logement{
+class Logement {
 
   late String? Quartier;
   late int? Distance_de_kofi;
@@ -20,19 +20,29 @@ class Logement{
     this.Reserved = false,
     this.UserInfo,
 
-});
+  });
 
-  Map<String,dynamic> toMap(){
-    return{
-      "Distance_de_kofi" : Distance_de_kofi,
-      "Quartier" : Quartier,
-      "ImageUrl" : ImageUrl,
-      "Paid" : paid,
-      "price" : price,
-      "Userinfo" : UserInfo,
-      "interiorImage" : InteriorImage,
-      "Reserved" : Reserved
-
+  Map<String, dynamic> toMap() {
+    return {
+      "Distance_de_kofi": Distance_de_kofi,
+      "Quartier": Quartier,
+      "ImageUrl": ImageUrl,
+      "Paid": paid,
+      "price": price,
+      "userinfo": UserInfo,
+      "interiorImage": InteriorImage,
+      "Reserved": Reserved
     };
   }
+
+
+  Map<String, dynamic> Paymentbuilding() {
+    return {
+
+      "Paid": paid,
+      "userinfo": UserInfo,
+      "reserved": Reserved
+    };
+  }
+
 }

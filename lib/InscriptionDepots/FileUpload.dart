@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
+import 'package:monprojetfinal/ServicesPayment/Paymentbeta.dart';
 
 import '../model/Student.dart';
 import 'PaymentRegister.dart';
@@ -524,7 +525,7 @@ class _FileUploadState extends State<FileUpload> {
                  newStudent.NomDocument = urlR.toSet().toList();
                  service.addNomDocument(newStudent);
 
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentBeta()));
 
 
                } on FirebaseException catch(e){

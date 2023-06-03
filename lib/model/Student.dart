@@ -10,7 +10,7 @@ class Student {
  late Map<String,dynamic>? PickAirport;
  late String? Department;
   late bool? Payment;
- late bool? HouseReservation;
+ late String? HouseReservation;
  late List<String>? NomDocument;
 
 
@@ -19,7 +19,7 @@ class Student {
    this.Matricule = null,
    this.PickAirport = null,
    this.Payment = false,
-   this.HouseReservation = false,
+   this.HouseReservation = null,
    this.Nationality,
    this.FirstName,
   this.LastName,
@@ -56,6 +56,18 @@ class Student {
  Map<String,dynamic> AiportPickup(){
   return{
    "AirportPickup" : PickAirport,
+  };
+ }
+
+ Map<String,dynamic> Paymentfees(){
+  return{
+   "Payment" : Payment,
+  };
+ }
+
+ Map<String,dynamic> HouseRe(){
+  return{
+   "HouseReservation" : HouseReservation,
   };
  }
 

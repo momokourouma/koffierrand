@@ -40,8 +40,36 @@ String? validateNationaity(String? nationality){
 }
 
 
-String? validatedepartment(String department){
+String? validatedepartment(String? department){
   if(department!.isEmpty){
     return "cant be empty";
   }return null;
 }
+
+String? validatePayDepart(String? depart){
+  if(depart!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+String? validateDateArv(String? depart){
+  if(depart!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+
+
+
+
+String? validateVol(String? vol) {
+  if (vol!.isEmpty) {
+    return "cant be empty";
+  }
+  return null;
+}
+
+String? validateHeureArv(String? heureArv){
+  if(heureArv!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+

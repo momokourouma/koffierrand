@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:monprojetfinal/model/Logement.dart';
 import 'package:monprojetfinal/model/Student.dart';
 
 class DataBaseService{
@@ -92,23 +93,30 @@ Future<List> getLogmentID() async{
 Future<DocumentSnapshot<Map<String, dynamic>>> getElementbyId(String id) async{
 
   var collection = await FirebaseFirestore.instance.collection("Logement").doc(id).get();
-
-
- return collection;
-
-
+  return collection;
 }
 
 Future<DocumentSnapshot<Map<String, dynamic>>> getPaymentState(String id) async{
-
   var collection = await FirebaseFirestore.instance.collection("students").doc(id).get();
-
-
   return collection;
-
-
 }
 
+Payment( Student student) async{
+  await _db.collection("students").doc(_useruid).update(student.Paymentfees());
+}
 
+Logementfees(Logement logement,String id) async{
+  await _db.collection("Logement").doc(id).update(logement.Paymentbuilding());
+}
+
+houseReservation(Student student) async{
+  await _db.collection("students").doc(_useruid).update(student.HouseRe());
+}
+
+Future<DocumentSnapshot<Map<String, dynamic>>> getStudentId(String id) async{
+
+  var collection = await FirebaseFirestore.instance.collection("students").doc(id).get();
+  return collection;
+}
 
 }

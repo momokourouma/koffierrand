@@ -9,6 +9,8 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
 import 'package:monprojetfinal/ServicesPayment/Payment.dart';
 import 'package:monprojetfinal/ServicesPayment/PaymentChecked.dart';
+import 'package:monprojetfinal/ServicesPayment/PaymentHouse.dart';
+import 'package:monprojetfinal/ServicesPayment/Paymentbeta.dart';
 
 class HouseDetails extends StatefulWidget {
   const HouseDetails({Key? key, required this.LogementId, required this.ImageUrl }) : super(key: key);
@@ -287,7 +289,7 @@ getHouseInfo() async{
                             // var test = await service.getElementbyId(widget.LogementId);
                             //  print(test["price"]);
 
-                             Navigator.push(context, MaterialPageRoute(builder: (context)=>const Payment()));
+                             Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentHouse( LogementId: widget.LogementId)));
 
 
 

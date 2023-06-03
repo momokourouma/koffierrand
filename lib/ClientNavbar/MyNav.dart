@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:badges/badges.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,8 +10,12 @@ import 'package:monprojetfinal/AirportPickup/AiportPickup.dart';
 import 'package:monprojetfinal/InscriptionDepots/DepotDoc.dart';
 import 'package:monprojetfinal/LoginPages/LoginPage.dart';
 import 'package:monprojetfinal/Information/PageInfo.dart';
+import 'package:monprojetfinal/Service/DatabaseService.dart';
 import 'package:monprojetfinal/ServicesPayment/Payment.dart';
 import 'package:monprojetfinal/TrouveMoiUnAppartment/FindMePlace.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
 
 
 class MyNav extends StatefulWidget {
@@ -21,7 +26,35 @@ class MyNav extends StatefulWidget {
 }
 
 class _MyNavState extends State<MyNav> {
-  final user = FirebaseAuth.instance.currentUser!;
+
+
+  @override
+  initState(){
+    super.initState();
+    getStudentInfo(user!.uid);
+
+  }
+  DataBaseService service = DataBaseService();
+  final user = FirebaseAuth.instance.currentUser;
+  String matricule = "";
+  bool notification = false;
+
+  getStudentInfo(String id) async {
+    DocumentReference reference = FirebaseFirestore.instance.collection('students').doc(user!.uid);
+    reference.snapshots().listen((data){
+      setState(() {
+        matricule = data.get("Matricule");
+      });
+      if(matricule.isEmpty){
+        setState(() {
+          matricule = "Votre demande est en cours de traitement";
+        });
+      }
+    });
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +70,7 @@ class _MyNavState extends State<MyNav> {
               style: GoogleFonts.lato(color: Colors.white, fontSize: 30)),
         ),
         actions: [
-           Padding(
-            padding: EdgeInsets.only(top: 16),
-            child: IconButton(onPressed: (){},
-                icon: Icon(FontAwesomeIcons.bell),iconSize: 27),
-          ),
+
           Padding(
             padding: EdgeInsets.all(15),
             child: IconButton(
@@ -70,7 +99,7 @@ class _MyNavState extends State<MyNav> {
                                   height: 10,
                                 ),
                                 Text(
-                                  "${user.email}",
+                                  "${user!.email}",
                                   style: GoogleFonts.lato(
                                     fontSize: 20,
                                     color: Colors.white,
@@ -125,7 +154,7 @@ class _MyNavState extends State<MyNav> {
                                   fontSize: 18,
                                 ),
                               ),
-                            ), 
+                            ),
                           ],
                         );
                       });
@@ -161,7 +190,7 @@ class _MyNavState extends State<MyNav> {
           Padding(
             padding: const EdgeInsets.only(left: 30),
             child: Center(
-              child: Text("${user.email}",
+              child: Text("${user!.email}",
                   style: GoogleFonts.quicksand(
                     fontWeight: FontWeight.w900,
                     fontSize: 20,
