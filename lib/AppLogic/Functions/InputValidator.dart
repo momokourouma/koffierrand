@@ -73,3 +73,30 @@ String? validateHeureArv(String? heureArv){
   }return null;
 }
 
+///Paymenthouse validator
+String? validatePayPrenom(String? prenom){
+  if(prenom!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+String? validatePayNom(String? nom){
+  if(nom!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+String? validatePayEmail(String? nom){
+  if(nom!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+
+String? validatePayCreditcard(String? nom){
+  if(nom!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+String? validatePayMontant(String? nom){
+  if(nom!.isEmpty){
+    return "cant be empty";
+  }return null;
+}

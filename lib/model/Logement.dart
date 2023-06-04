@@ -7,12 +7,14 @@ class Logement {
   late String? UserInfo;
   late int? price;
   late bool? paid;
+  late String? description;
   late List<String>? InteriorImage;
 
 
   Logement({
     this.Distance_de_kofi,
     this.Quartier,
+    this.description,
     this.ImageUrl,
     this.paid = false,
     this.price,
@@ -28,6 +30,7 @@ class Logement {
       "Quartier": Quartier,
       "ImageUrl": ImageUrl,
       "Paid": paid,
+      "description" : description,
       "price": price,
       "userinfo": UserInfo,
       "interiorImage": InteriorImage,

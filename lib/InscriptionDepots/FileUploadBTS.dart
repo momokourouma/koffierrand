@@ -77,7 +77,10 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: ()async{
-                        result = await FilePicker.platform.pickFiles();
+                        result = await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowedExtensions: ['jpg', 'pdf', 'doc'],
+                        );
 
                         if(result != null){
                           PlatformFile file  = result!.files.first;
@@ -144,7 +147,10 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: ()async{
-                        FilePickerResult? result = await FilePicker.platform.pickFiles();
+                        FilePickerResult? result = await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowedExtensions: ['jpg', 'pdf', 'doc'],
+                        );
 
                         if(result != null){
                           PlatformFile file  = result.files.first;
@@ -218,7 +224,10 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: ()async{
-                        FilePickerResult? result = await FilePicker.platform.pickFiles();
+                        FilePickerResult? result = await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowedExtensions: ['jpg', 'pdf', 'doc'],
+                        );
 
                         if(result != null){
                           PlatformFile file  = result.files.first;
@@ -292,7 +301,10 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: ()async{
-                        FilePickerResult? result = await FilePicker.platform.pickFiles();
+                        FilePickerResult? result = await FilePicker.platform.pickFiles(
+                          type: FileType.custom,
+                          allowedExtensions: ['jpg', 'pdf', 'doc'],
+                        );
 
                         if(result != null){
                           PlatformFile file  = result.files.first;

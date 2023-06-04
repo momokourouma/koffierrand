@@ -17,6 +17,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
+import '../CommentUtiliserApplication/HowTo.dart';
+
 
 class MyNav extends StatefulWidget {
   const MyNav({Key? key}) : super(key: key);
@@ -47,7 +49,7 @@ class _MyNavState extends State<MyNav> {
       });
       if(matricule.isEmpty){
         setState(() {
-          matricule = "Votre demande est en cours de traitement";
+          matricule = "Votre demande sera prise en compte apres depot";
         });
       }
     });
@@ -60,107 +62,103 @@ class _MyNavState extends State<MyNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         automaticallyImplyLeading: false,
         elevation: 0,
         //backgroundColor: Colors.orange,
         backgroundColor: Colors.transparent,
 
-        title: Center(
-          child: Text("",
-              style: GoogleFonts.lato(color: Colors.white, fontSize: 30)),
-        ),
+        title: Text("KOFFIERRAND",
+            style: GoogleFonts.lato(color: Colors.white, fontSize: 30)),
         actions: [
 
-          Padding(
-            padding: EdgeInsets.all(15),
-            child: IconButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          content: Container(
-                            height: 130,
-                            child: Column(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor:
-                                      Colors.white.withOpacity(0.3),
-                                  radius: 45,
-                                  child: Text(
-                                    "MK",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "${user!.email}",
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        content: Container(
+                          height: 130,
+                          child: Column(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor:
+                                    Colors.white.withOpacity(0.3),
+                                radius: 45,
+                                child: Text(
+                                  "MK",
                                   style: GoogleFonts.lato(
-                                    fontSize: 20,
+                                    fontSize: 15,
                                     color: Colors.white,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          title: Center(
-                            child: Text(
-                              "Profile",
-                              style: GoogleFonts.lato(
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "${user!.email}",
+                                style: GoogleFonts.lato(
+                                  fontSize: 20,
                                   color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          shape: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          backgroundColor: Colors.black.withOpacity(0.4),
-                          actions: [
-                            MaterialButton(
-                              onPressed: () {
-                                FirebaseAuth.instance.signOut();
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
-                              },
-                              height: 40,
-                              color: Colors.white,
-                              shape: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Text(
-                                "Deconnexion",
-                                style: GoogleFonts.lato(
-                                  fontSize: 18,
                                 ),
                               ),
+                            ],
+                          ),
+                        ),
+                        title: Center(
+                          child: Text(
+                            "Profile",
+                            style: GoogleFonts.lato(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        shape: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: Colors.black.withOpacity(0.4),
+                        actions: [
+                          MaterialButton(
+                            onPressed: () {
+                              FirebaseAuth.instance.signOut();
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
+                            },
+                            height: 40,
+                            color: Colors.white,
+                            shape: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                               MaterialButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              shape: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              color: Colors.white,
-                              height: 40,
-                              child: Text(
-                                "Annuler",
-                                style: GoogleFonts.lato(
-                                  fontSize: 18,
-                                ),
+                            child: Text(
+                              "Deconnexion",
+                              style: GoogleFonts.lato(
+                                fontSize: 18,
                               ),
                             ),
-                          ],
-                        );
-                      });
-                },
-                icon: Icon(FontAwesomeIcons.user)),
-          ),
+                          ),
+                             MaterialButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            shape: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            color: Colors.white,
+                            height: 40,
+                            child: Text(
+                              "Annuler",
+                              style: GoogleFonts.lato(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    });
+              },
+              icon: Icon(FontAwesomeIcons.user)),
         ],
       ),
 
@@ -175,32 +173,44 @@ class _MyNavState extends State<MyNav> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Text("Bienvenue a KOFFIERRAND ",
-                style: GoogleFonts.quicksand(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 25,
-                  color: Colors.white,
-                )),
+            padding: const EdgeInsets.all(10),
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              elevation: 20,
+              shadowColor: Colors.black,
+              color: Colors.black.withOpacity(0.1),
+              child: Column(
+                children: [
+                  Center(
+                    child: Text("MATRICULE",
+                      style: GoogleFonts.lato(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ) ,
+
+                    ),
+                  ),
+                  
+                  Padding(padding: EdgeInsets.all(10),
+                  child: Text("${matricule}",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                    color: Colors.white,
+                    fontSize: 20,
+                  )),
+                  )
+                ],
+              ),
+
+
+            )
           ),
 
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Center(
-              child: Text("${user!.email}",
-                  style: GoogleFonts.quicksand(
-                    fontWeight: FontWeight.w900,
-                    fontSize: 20,
-                    color: Colors.white,
-                  )),
-            ),
-          ),
+
 
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
 
           Row(
@@ -515,40 +525,48 @@ class _MyNavState extends State<MyNav> {
                       sigmaY: 16,
                       sigmaX: 16,
                     ),
-                    child: Container(
-                      height: 150,
-                      width: 150,
-                      decoration: BoxDecoration(
-                          color: HexColor("#F6F1F1"),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              width: 1.5,
-                              color: Colors.white.withOpacity(0.3))),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(2),
-                            child: Column(
-                              children: const [
-                                Center(
-                                  child: Image(
-                                    image: AssetImage(
-                                        "assets/mainpageassets/question.png"),
-                                    height: 80,
+                    child: GestureDetector(
+                      onTap:(){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>HowTo()));
+                      },
+                      child: Container(
+                        height: 150,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: HexColor("#F6F1F1"),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                                width: 1.5,
+                                color: Colors.white.withOpacity(0.3))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(2),
+                              child: Column(
+                                children: const [
+                                  Center(
+                                    child: Image(
+                                      image: AssetImage(
+                                          "assets/mainpageassets/question.png"),
+                                      height: 80,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Text(
-                            "COMMENT UTILISER APPLICATION",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lato(
-                              fontWeight: FontWeight.w900,
-                            ),
-                          )
-                        ],
+                            Text(
+                              "COMMENT UTILISER APPLICATION",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.lato(
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
