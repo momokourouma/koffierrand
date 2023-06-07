@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
+import 'package:monprojetfinal/ServicesPayment/Paymentbeta.dart';
 
 import '../Service/DatabaseService.dart';
 import 'PaymentRegister.dart';
@@ -39,7 +40,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(18),
         child: Column(
@@ -52,7 +53,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
               child: Text("Cliquez pour soumettre vos documents",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
                   )),
@@ -71,7 +72,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
-                            color: Colors.white,
+                            color: Colors.black,
                           )),
                     ),
                     SizedBox(height: 5,),
@@ -101,7 +102,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                           width: 150,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white.withOpacity(0.4)),
+                              color: Colors.black.withOpacity(0.4)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
@@ -118,7 +119,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                                     child: Text("${filename1}",
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.lato(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                       ),),
                                   ),
                                 ],
@@ -142,7 +143,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                         style: GoogleFonts.lato(
                           fontSize: 15,
                           fontWeight: FontWeight.w900,
-                          color: Colors.white,
+                          color: Colors.black,
                         )),
                     SizedBox(height: 5,),
                     GestureDetector(
@@ -169,7 +170,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                         width: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white.withOpacity(0.4)),
+                            color: Colors.black.withOpacity(0.4)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:  [
@@ -186,7 +187,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                                   child: Text("${filename2}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lato(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                     ),),
                                 ),
                               ],
@@ -218,7 +219,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
-                            color: Colors.white,
+                            color: Colors.black,
                           )),
                     ),
                     SizedBox(height: 5,),
@@ -248,7 +249,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                           width: 150,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white.withOpacity(0.4)),
+                              color: Colors.black.withOpacity(0.4)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
@@ -265,7 +266,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                                     child: Text("${filename3}",
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.lato(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                       ),),
                                   ),
                                 ],
@@ -295,7 +296,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
-                            color: Colors.white,
+                            color: Colors.black,
                           )),
                     ),
                     SizedBox(height: 5,),
@@ -323,7 +324,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                         width: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white.withOpacity(0.4)),
+                            color: Colors.black.withOpacity(0.4)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:  [
@@ -340,7 +341,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                                   child: Text("${filename4}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lato(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                     ),),
                                 ),
                               ],
@@ -387,7 +388,7 @@ class _FileUploadBTSState extends State<FileUploadBTS> {
                   for (var p in myfiles!.toSet().toList()){
                     service.UploadDoc(p.files.first.name, p.files.first.path);
                   }
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentRegister()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> PaymentBeta()));
                 } catch(e){
                   print(e);
                 }

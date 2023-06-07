@@ -55,7 +55,7 @@ class _DepotDocState extends State<DepotDoc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+      //backgroundColor: HexColor("#2C3333"),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(10),
@@ -75,12 +75,12 @@ class _DepotDocState extends State<DepotDoc> {
                   child: TextFormField(
                     validator: validateName,
                     controller: firstName,
-                    cursorColor: Colors.white,
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                            color: Colors.grey.shade500,
+                            color: Colors.black,
                             width: 2,
                           ),
                         ),
@@ -90,26 +90,26 @@ class _DepotDocState extends State<DepotDoc> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: Colors.blue, width: 2),
+                              const BorderSide(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: const Icon(
                           Iconsax.user,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 17,
                         ),
                         labelText: "Prenoms",
                         hintText: "Prenoms",
                         hintStyle: const TextStyle(
-                          color: Colors.grey,
+                          color: Colors.black,
                           fontSize: 15,
                         ),
                         labelStyle: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w900,
                           fontSize: 14,
                         )),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -120,41 +120,41 @@ class _DepotDocState extends State<DepotDoc> {
                   child: TextFormField(
                     validator: validateLastName,
                     controller: lastName,
-                    cursorColor: Colors.white,
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                            color: Colors.grey.shade500,
+                            color: Colors.black,
                             width: 2,
                           ),
                         ),
                         floatingLabelStyle: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 18,
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: Colors.blue, width: 2),
+                              const BorderSide(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: const Icon(
                           FontAwesomeIcons.user,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 15,
                         ),
                         labelText: "Nom",
                         hintText: "Nom",
                         hintStyle: const TextStyle(
-                          color: Colors.grey,
+                          color: Colors.black,
                           fontSize: 15,
                         ),
                         labelStyle: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w900,
                           fontSize: 14,
                         )),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -181,42 +181,42 @@ class _DepotDocState extends State<DepotDoc> {
                         });
                       }
                     },
-                    cursorColor: Colors.white,
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(
-                          color: Colors.grey.shade500,
+                          color: Colors.black,
                           width: 2,
                         ),
                       ),
                       floatingLabelStyle: const TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 18,
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(color: Colors.blue, width: 2),
+                            const BorderSide(color: Colors.black, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       prefixIcon: const Icon(
                         FontAwesomeIcons.calendarDays,
-                        color: Colors.white,
+                        color: Colors.black,
                         size: 17,
                       ),
                       labelText: "Date de naissance",
                       hintText: "Date de Naissance",
                       hintStyle: const TextStyle(
-                        color: Colors.grey,
+                        color: Colors.black,
                         fontSize: 15,
                       ),
                       labelStyle: const TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.w900,
                         fontSize: 14,
                       ),
                     ),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -231,9 +231,9 @@ class _DepotDocState extends State<DepotDoc> {
                     onTap: () {
                       showCountryPicker(
                           countryListTheme: const CountryListThemeData(
-                              backgroundColor: Colors.grey,
+                              backgroundColor: Colors.white,
                               textStyle: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                               )),
                           context: context,
                           showPhoneCode: false,
@@ -243,88 +243,49 @@ class _DepotDocState extends State<DepotDoc> {
                             });
                           });
                     },
-                    cursorColor: Colors.white,
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                            color: Colors.grey.shade500,
+                            color: Colors.black,
                             width: 2,
                           ),
                         ),
                         floatingLabelStyle: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 18,
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(color: Colors.blue, width: 2),
+                              const BorderSide(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: const Icon(
                           FontAwesomeIcons.earthAfrica,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 17,
                         ),
                         labelText: "Nationalite",
                         hintText: "Nationalite",
                         hintStyle: const TextStyle(
-                          color: Colors.grey,
+                          color: Colors.black,
                           fontSize: 15,
                         ),
                         labelStyle: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w900,
                           fontSize: 14,
                         )),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
 
-                /* Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextFormField(
 
-                    cursorColor: Colors.white,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide:  BorderSide(
-                            color: Colors.grey.shade500,
-                            width: 2,
-                          ),
 
-                        ),
-                        floatingLabelStyle: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.blue,width: 2),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        prefixIcon: const Icon(FontAwesomeIcons.user,color: Colors.white, size: 15,),
-                        labelText: "Department",
-                        hintText: "Department",
-                        hintStyle: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15,
-                        ),
-                        labelStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 14,
-                        )
-
-                    ),
-                    style: TextStyle(
-                        color: Colors.white
-                    ),
-                  ),
-                ), */
 
                 Padding(
                   padding: const EdgeInsets.all(20),
@@ -332,26 +293,26 @@ class _DepotDocState extends State<DepotDoc> {
                     
 
                       style: const TextStyle(
-                        color: Colors.blue,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),
                       decoration: InputDecoration(
                           labelText: "Department",
                           labelStyle: const TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.w900,
                             fontSize: 20,
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                                const BorderSide(color: Colors.white, width: 2),
+                                const BorderSide(color: Colors.black, width: 2),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(
-                                  color: Colors.grey.shade500, width: 2))),
+                                  color: Colors.black, width: 2))),
                       value: curentv,
                       items: name.map((name) {
                         return DropdownMenuItem(
@@ -393,7 +354,7 @@ class _DepotDocState extends State<DepotDoc> {
                         Navigator.push(context, MaterialPageRoute(builder: (
                             context) => FileUploadBTS()));
                       }
-                      else if (curentv == " Mastère"){
+                      else if (curentv == "Mastère"){
                         try {
                           service.addStudent(newStudent);
                         } on FirebaseFirestore catch (e) {
@@ -415,7 +376,7 @@ class _DepotDocState extends State<DepotDoc> {
                     }
                     
                   },
-                  color: Colors.blue,
+                  color: Colors.black,
                   height: 45,
                   elevation: 20,
                   padding: EdgeInsets.symmetric(horizontal: 60),
@@ -424,7 +385,7 @@ class _DepotDocState extends State<DepotDoc> {
                   ),
                   child: Text("Suivant",
                       style: GoogleFonts.lato(
-                        color: Colors.black87,
+                        color: Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
                       )),

@@ -27,6 +27,7 @@ class _PaymentHouseState extends State<PaymentHouse> {
   initState() {
     super.initState();
     getHouseInfo();
+    getPayment();
   }
 
   TextEditingController firstname = TextEditingController();
@@ -47,13 +48,20 @@ class _PaymentHouseState extends State<PaymentHouse> {
   bool paid = false;
 
   getHouseInfo() async {
-    //DocumentSnapshot<Map<String, dynamic>> document = await service.getElementbyId(widget.LogementId);
-    DocumentSnapshot<Map<String, dynamic>> document =
-        await service.getElementbyId("EcHVjdAPSJ7iDTjvA5uO");
+    DocumentSnapshot<Map<String, dynamic>> document = await service.getElementbyId(widget.LogementId);
+    //DocumentSnapshot<Map<String, dynamic>> document =await service.getElementbyId("EcHVjdAPSJ7iDTjvA5uO");
     setState(() {
       name = document.data()?["imageUrl"][0]["name"];
       paid = document.data()?["Paid"];
     });
+  }
+  bool payment = false;
+  getPayment() async{
+    DocumentSnapshot<Map<String, dynamic>> document = await service.getPaymentState(FirebaseAuth.instance.currentUser!.uid);
+    setState(() {
+      payment = document.data()?["Payment"];
+    });
+
   }
 
   @override
@@ -274,7 +282,20 @@ class _PaymentHouseState extends State<PaymentHouse> {
                     height: 40,
                     child: MaterialButton(
                       onPressed: () async {
+
                         if (_formkey.currentState!.validate()) {
+                          print(payment);
+
+                          if(payment == false){
+                            return showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Text("Pour faire une reservation vous devez vous s'inscrire"),
+                                  );
+                                });
+
+                          }
                           final url =
                               "http://192.168.100.85:8000/depot/${montant.text.trim()}";
                           Logement newLogement = Logement();
@@ -290,7 +311,8 @@ class _PaymentHouseState extends State<PaymentHouse> {
                           );
                           final result = sending.body;
                           final message = jsonDecode(sending.body);
-                          if (paid == true) {
+
+                           if (paid == true) {
                             return showDialog(
                                 context: context,
                                 builder: (context) {

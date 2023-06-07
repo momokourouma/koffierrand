@@ -6,6 +6,8 @@ import 'package:lottie/lottie.dart';
 import 'package:monprojetfinal/ClientNavbar/MyNav.dart';
 import 'package:monprojetfinal/ServicesPayment/paymentform.dart';
 
+import '../ServicesPayment/Paymentbeta.dart';
+
 class PaymentRegister extends StatefulWidget {
   const PaymentRegister({Key? key}) : super(key: key);
 
@@ -56,7 +58,9 @@ class _PaymentRegisterState extends State<PaymentRegister> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 25),
-                          child: MaterialButton(onPressed: (){},child: Text("Payer",
+                          child: MaterialButton(onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentForm()));
+                          },child: Text("Payer",
                               style: GoogleFonts.lato(
                                 fontSize: 18,
                               )),
@@ -96,7 +100,9 @@ class _PaymentRegisterState extends State<PaymentRegister> {
                                 height: 80),
                           ),
                         ),
-                        MaterialButton(onPressed: (){},child: Text("Payer",
+                        MaterialButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentForm()));
+                        },child: Text("Payer",
                             style: GoogleFonts.lato(
                               fontSize: 18,
                             )),
@@ -143,7 +149,9 @@ class _PaymentRegisterState extends State<PaymentRegister> {
                                 height: 80),
                           ),
                         ),
-                        MaterialButton(onPressed: (){},child: Text("Payer",
+                        MaterialButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentForm()));
+                        },child: Text("Payer",
                             style: GoogleFonts.lato(
                               fontSize: 18,
                             )),
@@ -182,7 +190,9 @@ class _PaymentRegisterState extends State<PaymentRegister> {
                                 height: 80),
                           ),
                         ),
-                        MaterialButton(onPressed: (){},child: Text("Payer",
+                        MaterialButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentForm()));
+                        },child: Text("Payer",
                             style: GoogleFonts.lato(
                               fontSize: 18,
                             )),
@@ -227,7 +237,9 @@ class _PaymentRegisterState extends State<PaymentRegister> {
                                 height: 80),
                           ),
                         ),
-                        MaterialButton(onPressed: (){},child:Text("Payer",
+                        MaterialButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentForm()));
+                        },child:Text("Payer",
                             style: GoogleFonts.lato(
                               fontSize: 18,
                             )),
@@ -274,7 +286,7 @@ class _PaymentRegisterState extends State<PaymentRegister> {
                         Padding(
                           padding: const EdgeInsets.only(top: 38),
                           child: MaterialButton(onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentForm()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentBeta()));
                           },
                             height: 30,
                             elevation: 20,

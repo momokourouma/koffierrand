@@ -49,8 +49,22 @@ class _HouseDetailsState extends State<HouseDetails> {
       quartier = document.data()?['quartier'];
       price = document.data()?['price'];
       distance = document.data()?['distanceDeKofi'];
-      description = document.data()?['description'];
+      //description = document.data()?['description'];
     });
+  }
+
+  getLogemntDescription(String id) async {
+    try{
+      DocumentReference reference = FirebaseFirestore.instance.collection('Logement').doc(widget.LogementId);
+      reference.snapshots().listen((data){
+        setState(() {
+          description = data.get("description");
+        });
+      });
+    } on FirebaseException catch(e){
+      print(e.code);
+    }
+
   }
 
   Widget build(BuildContext context) {
@@ -82,7 +96,7 @@ class _HouseDetailsState extends State<HouseDetails> {
           Container(
             height: 650,
             decoration: BoxDecoration(
-              color: HexColor("#2C3333"),
+              //color: HexColor("#2C3333"),
             ),
             child: Column(
               children: [
@@ -102,13 +116,13 @@ class _HouseDetailsState extends State<HouseDetails> {
                             children: [
                               Icon(
                                 FontAwesomeIcons.dollarSign,
-                                color: Colors.blue,
+                                color: Colors.black,
                               ),
                               SizedBox(height: 5),
-                              Text("${price}",
+                              Text("${price}GNF/mois",
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.lato(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   )),
                             ],
                           ),
@@ -123,13 +137,13 @@ class _HouseDetailsState extends State<HouseDetails> {
                             children: [
                               Icon(
                                 FontAwesomeIcons.locationDot,
-                                color: Colors.blue,
+                                color: Colors.black,
                               ),
                               SizedBox(height: 5),
                               Text("${quartier}",
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.lato(
-                                      color: Colors.white, fontSize: 15)),
+                                      color: Colors.black, fontSize: 15)),
                             ],
                           ),
                         ),
@@ -143,13 +157,13 @@ class _HouseDetailsState extends State<HouseDetails> {
                             children: [
                               const Icon(
                                 FontAwesomeIcons.mapLocation,
-                                color: Colors.blue,
+                                color: Colors.black,
                               ),
                               SizedBox(height: 5),
                               Text("${distance}m",
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.lato(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 15,
                                   )),
                             ],
@@ -165,7 +179,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                           Text(
                             "Description",
                             style: GoogleFonts.lato(
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontSize: 30,
                             ),
                           ),
@@ -185,7 +199,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                             child: Text(
                               "${description}",
                               style: GoogleFonts.lato(
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                           ),
@@ -200,7 +214,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                           Text(
                             "Photos",
                             style: GoogleFonts.lato(
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontSize: 30,
                             ),
                           ),
@@ -302,7 +316,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                           EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                       child: Text("Reservez",
                           style: GoogleFonts.lato(
-                            color: Colors.blue,
+                            color: Colors.white,
                             fontSize: 25,
                           )),
                     ),

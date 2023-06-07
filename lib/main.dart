@@ -23,6 +23,7 @@ import 'package:monprojetfinal/Information/ProgrammeAcademique.dart';
 import 'package:monprojetfinal/LoginPages/Register.dart';
 import 'package:monprojetfinal/myclicp.dart';
 import 'package:monprojetfinal/ServicesPayment/paymentform.dart';
+import 'package:monprojetfinal/splashscreen.dart';
 import 'package:monprojetfinal/testingBadges.dart';
 import 'package:monprojetfinal/testingStream.dart';
 import 'InscriptionDepots/FileUploadBTS.dart';
@@ -51,24 +52,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      //
-
-     home:AuthVerify(),
+       home: AuthVerify(),
+      //home: PaymentChecked(),
+     //home: TestingGrid(),
+     //home:splash(),
      //home:FindMePlace(),
       //home: TestingInterior(),
       //home: PaymentHouse(LogementId: "EcHVjdAPSJ7iDTjvA5uO"),
 
 
-      /*child: ListView(
-                        shrinkWrap: true,
-                        children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-                        return ListTile(
-                          title: Text("${data["imageUrl"][0]["downloadURL"]}"),
-                          //subtitle: Text(data['price']),
-                        );
-                      }).toList(),
-                    ), */
+
     );
   }
 }

@@ -100,3 +100,24 @@ String? validatePayMontant(String? nom){
     return "cant be empty";
   }return null;
 }
+
+/// register validator
+String? validateRegisterEmail(String? email){
+  if(email!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+
+String? validateRegisterPassword(String? password){
+  if(password!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+
+String? validateRegisterRetypePassword(String? password){
+  if(password!.isEmpty){
+    return "cant be empty";
+  }return null;
+}
+
+

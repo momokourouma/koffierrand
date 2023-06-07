@@ -25,10 +25,10 @@ class _PaymentCheckedState extends State<PaymentChecked> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+      //backgroundColor: HexColor("#2C3333"),
       body: Column(
         children: [
-          const SizedBox(height: 100,),
+          const SizedBox(height: 200,),
 
           Center(
               child: Lottie.asset("assets/PaymentValidationAssets/validation.json",height: 300)
@@ -40,7 +40,7 @@ class _PaymentCheckedState extends State<PaymentChecked> {
               Text("Paiement Valider",
                 style: GoogleFonts.lato(
                   fontSize: 35,
-                  color: Colors.white,
+                  color: Colors.black,
                 ) ,),
             ],
           )

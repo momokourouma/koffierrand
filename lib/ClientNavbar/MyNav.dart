@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:monprojetfinal/AirportPickup/AiportPickup.dart';
 import 'package:monprojetfinal/InscriptionDepots/DepotDoc.dart';
+import 'package:monprojetfinal/InscriptionDepots/PaymentRegister.dart';
 import 'package:monprojetfinal/LoginPages/LoginPage.dart';
 import 'package:monprojetfinal/Information/PageInfo.dart';
 import 'package:monprojetfinal/Service/DatabaseService.dart';
@@ -18,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
 import '../CommentUtiliserApplication/HowTo.dart';
+import '../ServicesPayment/Paymentbeta.dart';
 
 
 class MyNav extends StatefulWidget {
@@ -42,17 +44,23 @@ class _MyNavState extends State<MyNav> {
   bool notification = false;
 
   getStudentInfo(String id) async {
-    DocumentReference reference = FirebaseFirestore.instance.collection('students').doc(user!.uid);
-    reference.snapshots().listen((data){
-      setState(() {
-        matricule = data.get("Matricule");
-      });
-      if(matricule.isEmpty){
+    try{
+      DocumentReference reference = FirebaseFirestore.instance.collection('students').doc(user!.uid);
+      reference.snapshots().listen((data){
         setState(() {
-          matricule = "Votre demande sera prise en compte apres depot";
+          matricule = data.get("Matricule");
         });
-      }
-    });
+        if(matricule.isEmpty){
+          setState(() {
+            matricule = "Traiment de votre demande en cours..";
+          });
+        }
+
+      });
+    } on FirebaseException catch(e){
+      print(e.code);
+    }
+
   }
 
 
@@ -61,6 +69,7 @@ class _MyNavState extends State<MyNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -69,7 +78,7 @@ class _MyNavState extends State<MyNav> {
         backgroundColor: Colors.transparent,
 
         title: Text("KOFFIERRAND",
-            style: GoogleFonts.lato(color: Colors.white, fontSize: 30)),
+            style: GoogleFonts.lato(color: Colors.black, fontSize: 30)),
         actions: [
 
           IconButton(
@@ -158,12 +167,13 @@ class _MyNavState extends State<MyNav> {
                       );
                     });
               },
-              icon: Icon(FontAwesomeIcons.user)),
+              icon: Icon(FontAwesomeIcons.user),color: Colors.black),
         ],
       ),
 
       //Background color
-      backgroundColor: HexColor("#454545"),
+       backgroundColor: HexColor("#F8F6F4"),
+
 
       //Body
       body: ListView(
@@ -176,11 +186,20 @@ class _MyNavState extends State<MyNav> {
             padding: const EdgeInsets.all(10),
             child: Card(
               clipBehavior: Clip.antiAlias,
-              elevation: 20,
+              elevation: 30,
               shadowColor: Colors.black,
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withOpacity(0.9),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(
+                  
+                  width: 4,
+                  color: Colors.white
+                )
+              ),
               child: Column(
                 children: [
+                  SizedBox(height: 10,),
                   Center(
                     child: Text("MATRICULE",
                       style: GoogleFonts.lato(
@@ -284,7 +303,7 @@ class _MyNavState extends State<MyNav> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Payment()));
+                            MaterialPageRoute(builder: (context) => PaymentRegister()));
                       },
                       child: Container(
                         height: 150,
@@ -536,7 +555,7 @@ class _MyNavState extends State<MyNav> {
                         height: 150,
                         width: 150,
                         decoration: BoxDecoration(
-                            color: HexColor("#F6F1F1"),
+                            color: HexColor("#F3F0D7"),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
                                 width: 1.5,

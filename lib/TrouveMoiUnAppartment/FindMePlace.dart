@@ -37,7 +37,7 @@ class _FindMePlaceState extends State<FindMePlace> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#454545"),
+      //backgroundColor: HexColor("#454545"),
       body: Column(
         children: [
           Expanded(
@@ -53,22 +53,27 @@ class _FindMePlaceState extends State<FindMePlace> {
                     return Text('Loading...');
                   }
 
-                  return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: snapshot.data!.docs.length,
+                  return GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+
+                          maxCrossAxisExtent: 200,
+                          childAspectRatio: 3 / 4,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 5),
+                      itemCount: snapshot.data!.docs.length ,
                       itemBuilder:(BuildContext context,int index){
                         DocumentSnapshot document = snapshot.data!.docs[index];
                         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
                         return  Padding(
-                          padding: const EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(10),
                           child: Container(
-                            height: 400,
+                            height: 200,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               image: DecorationImage(image:NetworkImage("${data["imageUrl"][0]["downloadURL"]}"),fit: BoxFit.fill),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(top: 350),
+                              padding: const EdgeInsets.only(top: 190),
                               child: Column(
                                 children: [
                                   MaterialButton(onPressed: () async{

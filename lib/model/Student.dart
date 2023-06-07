@@ -32,7 +32,7 @@ class Student {
 
  Map<String,dynamic> toMap(){
   return {
-   "Matricule" : null ,
+   "Matricule" : "" ,
     "FirstName" : FirstName,
     "LastName" : LastName,
     "DateOfBirth" : DateOfBirth,
@@ -40,7 +40,7 @@ class Student {
     "AirportPickup" : PickAirport,
     "Country" : Nationality,
     "HouseReservation" : HouseReservation,
-    "Payement" : Payment,
+    "Payment" : Payment,
    // "DepotDoc" : NomDocument,
 
 

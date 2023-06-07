@@ -51,7 +51,7 @@ class _FileUploadState extends State<FileUpload> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+      //backgroundColor: HexColor("#2C3333"),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(18),
         child: Column(
@@ -64,7 +64,7 @@ class _FileUploadState extends State<FileUpload> {
               child: Text("Cliquez pour soumettre vos documents",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
                   )),
@@ -83,7 +83,7 @@ class _FileUploadState extends State<FileUpload> {
                       style: GoogleFonts.lato(
                         fontSize: 15,
                         fontWeight: FontWeight.w900,
-                        color: Colors.white,
+                        color: Colors.black,
                       )),
                     ),
                     SizedBox(height: 5,),
@@ -112,7 +112,7 @@ class _FileUploadState extends State<FileUpload> {
                           width: 150,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white.withOpacity(0.4)),
+                              color: Colors.black.withOpacity(0.4)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
@@ -129,7 +129,7 @@ class _FileUploadState extends State<FileUpload> {
                                     child: Text("${filename1}",
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.lato(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                     ),),
                                   ),
                                 ],
@@ -153,7 +153,7 @@ class _FileUploadState extends State<FileUpload> {
                         style: GoogleFonts.lato(
                           fontSize: 15,
                           fontWeight: FontWeight.w900,
-                          color: Colors.white,
+                          color: Colors.black,
                         )),
                     SizedBox(height: 5,),
                     GestureDetector(
@@ -180,7 +180,7 @@ class _FileUploadState extends State<FileUpload> {
                         width: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white.withOpacity(0.4)),
+                            color: Colors.black.withOpacity(0.4)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:  [
@@ -197,7 +197,7 @@ class _FileUploadState extends State<FileUpload> {
                                   child: Text("${filename2}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lato(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                     ),),
                                 ),
                               ],
@@ -229,7 +229,7 @@ class _FileUploadState extends State<FileUpload> {
                       style: GoogleFonts.lato(
                         fontSize: 15,
                         fontWeight: FontWeight.w900,
-                        color: Colors.white,
+                        color: Colors.black,
                       )),
                     ),
                     SizedBox(height: 5,),
@@ -259,7 +259,7 @@ class _FileUploadState extends State<FileUpload> {
                           width: 150,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white.withOpacity(0.4)),
+                              color: Colors.black.withOpacity(0.4)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children:  [
@@ -276,7 +276,7 @@ class _FileUploadState extends State<FileUpload> {
                                     child: Text("${filename3}",
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.lato(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                       ),),
                                   ),
                                 ],
@@ -306,7 +306,7 @@ class _FileUploadState extends State<FileUpload> {
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
-                            color: Colors.white,
+                            color: Colors.black,
                           )),
                     ),
                     SizedBox(height: 5,),
@@ -334,7 +334,7 @@ class _FileUploadState extends State<FileUpload> {
                         width: 150,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white.withOpacity(0.4)),
+                            color: Colors.black.withOpacity(0.4)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:  [
@@ -351,7 +351,7 @@ class _FileUploadState extends State<FileUpload> {
                                   child: Text("${filename4}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.lato(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                     ),),
                                 ),
                               ],
@@ -389,7 +389,7 @@ class _FileUploadState extends State<FileUpload> {
                             style: GoogleFonts.lato(
                               fontSize: 15,
                               fontWeight: FontWeight.w900,
-                              color: Colors.white,
+                              color: Colors.black,
                             )),
                       ),
                       SizedBox(height: 5,),
@@ -424,7 +424,7 @@ class _FileUploadState extends State<FileUpload> {
                             width: 150,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Colors.white.withOpacity(0.4)),
+                                color: Colors.black.withOpacity(0.4)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children:  [
@@ -443,7 +443,7 @@ class _FileUploadState extends State<FileUpload> {
                                       child: Text(filename5,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.lato(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                         ),),
                                     ),
                                   ],
@@ -480,35 +480,6 @@ class _FileUploadState extends State<FileUpload> {
               List<String>? urlR = [];
 
 
-            /*  try{
-                for(var files in myfiles.toSet().toList()){
-                   url.add(files.files.first.name);
-                }
-                for(var urls in url.toSet().toList()){
-                  var urlLink = await service.getFileUrl(urls);
-                  urlR.add(urlLink);
-                }
-                print(urlR);
-
-
-
-              }on FirebaseException catch(e){
-                print(e.message);
-              } */
-
-
-
-
-
-
-
-
-
-             /* Student newStudent = Student();
-              newStudent.NomDocument = momo;
-              service.addNomDocument(newStudent); */
-
-
 
 
              if(myfiles!.isEmpty || myfiles!.length < 4){
@@ -531,7 +502,6 @@ class _FileUploadState extends State<FileUpload> {
                    var urlLink = await service.getFileUrl(urls);
                    urlR.add(urlLink);
                  }
-
 
 
 

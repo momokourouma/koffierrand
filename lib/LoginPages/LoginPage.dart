@@ -54,13 +54,13 @@ class _LoginState extends State<Login> {
 
                 SafeArea(
                   child: Center(
-                      child: Lottie.asset("assets/student.json",width: 100)
+                      child: Image.asset("assets/logokofi.png")
                   ),
                 ),
 
                 SizedBox(height: 40,),
 
-                Text("LOGIN",
+                Text("CONNEXION",
                 style: GoogleFonts.lato(
                   fontSize: 40,
                   color: Colors.black,
@@ -122,7 +122,7 @@ class _LoginState extends State<Login> {
                     controller: _passwordController,
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
-                      hintText: "Password",
+                      hintText: "Mot de passe",
                         hintStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -146,7 +146,7 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         prefixIcon: const Icon(Iconsax.key,color: Colors.black, size: 17,),
-                        labelText: "Password",
+                        labelText: "Mot de passe",
                         labelStyle: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w900,
@@ -168,7 +168,7 @@ class _LoginState extends State<Login> {
                       TextButton(onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>PasswordForget()));
                       },
-                          child: const Text("Forgot password ?",
+                          child: const Text("Mot de passe oublié?",
                           style: TextStyle(
                             color: Colors.black,
 
@@ -242,6 +242,32 @@ class _LoginState extends State<Login> {
 
                           }
 
+
+                        }else{
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  content: Text("${e.message}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.lato(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                  actions: [
+                                    TextButton(onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                        child: Text("OK",
+                                          style: GoogleFonts.lato(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),))
+                                  ],
+                                );
+                              });
+
                         }
                       }
                     }
@@ -272,11 +298,11 @@ class _LoginState extends State<Login> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don\"t have an account?"),
+                    const Text("Vous n'avez pas de compte?"),
                     TextButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=> Register()));
                     },
-                        child: const Text("Register Now"))
+                        child: const Text("Inscription"))
                   ],
                 )
 
