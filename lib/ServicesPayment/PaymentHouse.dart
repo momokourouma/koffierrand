@@ -296,8 +296,8 @@ class _PaymentHouseState extends State<PaymentHouse> {
                                 });
 
                           }
-                          final url =
-                              "http://192.168.100.85:8000/depot/${montant.text.trim()}";
+                          //final url = "http://192.168.100.85:8000/depot/${montant.text.trim()}";
+                          final url = "http://192.168.99.146.85:8000/depot/${montant.text.trim()}";
                           Logement newLogement = Logement();
                           Student newStudent = Student();
                           DataBaseService service = DataBaseService();
@@ -325,6 +325,7 @@ class _PaymentHouseState extends State<PaymentHouse> {
                             newLogement.UserInfo = usermail;
                             newLogement.paid = true;
                             newLogement.Reserved = true;
+                            newLogement.Month  = new DateTime.now();
 
                             newStudent.HouseReservation = name;
                             service.houseReservation(newStudent);

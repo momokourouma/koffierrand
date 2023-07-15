@@ -11,7 +11,7 @@ class Contact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+      //backgroundColor: HexColor("#2C3333"),
       body: ListView(
         children: [
           Column(
@@ -22,7 +22,7 @@ class Contact extends StatelessWidget {
 
              Text("Batiment Principal",
              style: GoogleFonts.lato(
-               color: Colors.blue,
+               color: Colors.black,
                fontSize: 30
              )),
              SizedBox(height: 10,),
@@ -41,7 +41,7 @@ class Contact extends StatelessWidget {
               Text("Faculte des science paramedicales",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                      color: Colors.blue,
+                      color: Colors.black,
                       fontSize: 30
                   )),
               SizedBox(height: 10,),
@@ -60,7 +60,7 @@ class Contact extends StatelessWidget {
               Text("La salle Malick Conde",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                      color: Colors.blue,
+                      color: Colors.black,
                       fontSize: 30
                   )),
               SizedBox(height: 10,),
@@ -79,7 +79,7 @@ class Contact extends StatelessWidget {
               Text("Le terrain de basket",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
-                      color: Colors.blue,
+                      color: Colors.black,
                       fontSize: 30
                   )),
               SizedBox(height: 10,),

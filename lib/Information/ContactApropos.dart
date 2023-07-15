@@ -11,7 +11,7 @@ class AproposETcontact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+      //backgroundColor: HexColor("#2C3333"),
       body: Column(
         children: [
           SizedBox(height: 50,),
@@ -23,7 +23,7 @@ class AproposETcontact extends StatelessWidget {
                 children: [
                   Center(child: Text("BP: 1367 – Nongo, Ratoma, Conakry",
                     style: GoogleFonts.lato(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20,
                     ),)),
                   SizedBox(height: 10,),
@@ -31,7 +31,7 @@ class AproposETcontact extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: Icon(Iconsax.message, color: Colors.white,size: 40),
+                        child: Icon(Iconsax.message, color: Colors.black,size: 40),
                       ),
 
                       SizedBox(width: 5,),
@@ -40,7 +40,7 @@ class AproposETcontact extends StatelessWidget {
                         child: Text("contact@ukaguinee.com",
                             style: GoogleFonts.lato(
                               fontSize: 20,
-                              color: Colors.white,
+                              color: Colors.black,
                             )),
                       )
                     ],
@@ -49,7 +49,7 @@ class AproposETcontact extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: Icon(Iconsax.call, color: Colors.white,size: 40),
+                        child: Icon(Iconsax.call, color: Colors.black,size: 40),
                       ),
 
                       SizedBox(width: 5,),
@@ -58,7 +58,7 @@ class AproposETcontact extends StatelessWidget {
                         child: Text("(+224) 666 72 44 06",
                             style: GoogleFonts.lato(
                               fontSize: 20,
-                              color: Colors.white,
+                              color: Colors.black,
                             )),
                       ),
                     ],
@@ -69,14 +69,14 @@ class AproposETcontact extends StatelessWidget {
               height: 150,
               width: 350,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.black.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
           Text("A Propos",
               style: GoogleFonts.lato(
-                color: Colors.blue,
+                color: Colors.black,
                 fontSize: 30,
               ) ),
           SizedBox(height: 5,),
@@ -87,7 +87,7 @@ class AproposETcontact extends StatelessWidget {
 
               style: GoogleFonts.lato(
                 fontSize: 20,
-                color: Colors.white,
+                color: Colors.black,
               )),
               height: 300,
 

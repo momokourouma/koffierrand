@@ -14,7 +14,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+      //backgroundColor: HexColor("#2C3333"),
       body:SingleChildScrollView(
         child: Column(
           children: [
@@ -24,7 +24,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
               child:Text("Programme Academique",
                 style: GoogleFonts.lato(
                   fontSize: 30,
-                  color: Colors.blue,
+                  color: Colors.black,
                 ),
               ),
             ),
@@ -32,7 +32,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
               padding: const EdgeInsets.only(top: 10,right: 240),
               child: Text("Licence",
               style: GoogleFonts.lato(
-                color: Colors.blue,
+                color: Colors.black,
                 fontSize: 25,
               )),
             ),
@@ -50,7 +50,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Ecole Polytechnique d'ingenieurs",
                     style: GoogleFonts.lato(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20,
                     )),
                   ),
@@ -59,7 +59,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     child: Text("-Faculté de Sciences Medicales et Paramedicales",
 
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -67,7 +67,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Faculté des Lettres et Sciences humaines",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -75,7 +75,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Faculté des Sciences",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -83,7 +83,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Faculté des Sciences Economique et de Gestion",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -91,7 +91,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Faculté des Sciences Juridiques et Politiques",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -99,7 +99,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Institut Universitaires Professionnel",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -110,7 +110,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
               padding: const EdgeInsets.only(right: 240),
               child: Text("Master",
                   style: GoogleFonts.lato(
-                    color: Colors.blue,
+                    color: Colors.black,
                     fontSize: 25,
                   )),
             ),
@@ -127,7 +127,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Sciences Economiques et Gestion",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -135,7 +135,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Sciences Sociales",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -143,7 +143,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Droits et Sciences Politiques",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -151,7 +151,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("-Sante Public",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -159,7 +159,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Systèmes D’informations",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),
@@ -167,7 +167,7 @@ class _ProgrammeAcademiqueState extends State<ProgrammeAcademique> {
                     padding: const EdgeInsets.only(left: 30,top: 10),
                     child: Text("- Management",
                         style: GoogleFonts.lato(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 20,
                         )),
                   ),

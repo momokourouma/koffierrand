@@ -26,6 +26,7 @@ class _HouseDetailsState extends State<HouseDetails> {
   initState() {
     super.initState();
     getHouseInfo();
+
   }
 
   DataBaseService service = DataBaseService();
@@ -42,6 +43,24 @@ class _HouseDetailsState extends State<HouseDetails> {
   int price = 0;
   int distance = 0;
 
+  /*getLogemntinfo() async {
+    try{
+      DocumentReference reference = FirebaseFirestore.instance.collection('Logement').doc(widget.LogementId);
+      reference.snapshots().listen((data){
+        setState(() {
+          description = data.get("description");
+          price = data.get("price");
+          distance = data.get("distance");
+          quartier = data.get("quartier");
+
+        });
+      });
+    } on FirebaseException catch(e){
+      print(e.code);
+    }
+
+  }*/
+
   getHouseInfo() async {
     DocumentSnapshot<Map<String, dynamic>> document =
         await service.getElementbyId(widget.LogementId);
@@ -49,23 +68,11 @@ class _HouseDetailsState extends State<HouseDetails> {
       quartier = document.data()?['quartier'];
       price = document.data()?['price'];
       distance = document.data()?['distanceDeKofi'];
-      //description = document.data()?['description'];
+      description = document.data()?['description'];
     });
   }
 
-  getLogemntDescription(String id) async {
-    try{
-      DocumentReference reference = FirebaseFirestore.instance.collection('Logement').doc(widget.LogementId);
-      reference.snapshots().listen((data){
-        setState(() {
-          description = data.get("description");
-        });
-      });
-    } on FirebaseException catch(e){
-      print(e.code);
-    }
 
-  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,15 +87,14 @@ class _HouseDetailsState extends State<HouseDetails> {
               //image: AssetImage("assets/houses/int1.jpg"),
               fit: BoxFit.fill,
             )),
-            child: const Row(
+            child:  Row(
               children: [
                 Padding(
                   padding: EdgeInsets.only(bottom: 300, left: 10),
-                  child: Icon(
-                    FontAwesomeIcons.circleChevronLeft,
-                    color: Colors.black,
-                    size: 30,
-                  ),
+                  child: IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  },
+                      icon: Icon(FontAwesomeIcons.leftLong,size: 30),)
                 ),
               ],
             ),

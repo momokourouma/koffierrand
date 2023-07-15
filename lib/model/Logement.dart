@@ -9,6 +9,7 @@ class Logement {
   late bool? paid;
   late String? description;
   late List<String>? InteriorImage;
+  late DateTime? Month;
 
 
   Logement({
@@ -21,6 +22,7 @@ class Logement {
     this.InteriorImage,
     this.Reserved = false,
     this.UserInfo,
+    this.Month
 
   });
 
@@ -34,7 +36,8 @@ class Logement {
       "price": price,
       "userinfo": UserInfo,
       "interiorImage": InteriorImage,
-      "Reserved": Reserved
+      "Reserved": Reserved,
+      "Month" : Month
     };
   }
 
@@ -44,7 +47,8 @@ class Logement {
 
       "Paid": paid,
       "userinfo": UserInfo,
-      "reserved": Reserved
+      "reserved": Reserved,
+      "Month" : Month
     };
   }
 

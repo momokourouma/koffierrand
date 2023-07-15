@@ -254,7 +254,8 @@ class _PaymentBetaState extends State<PaymentBeta> {
                     child: MaterialButton(onPressed: () async{
 
                       if(_formkey.currentState!.validate()){
-                        final url = "http://192.168.100.85:8000/depot/${montant.text.trim()}";
+                        //final url = "http://192.168.100.85:8000/depot/${montant.text.trim()}";
+                        final url = "http://192.168.99.146.85:8000/depot/${montant.text.trim()}";
                         Student newStudent = Student();
                         DataBaseService service = DataBaseService();
                         var data = {
@@ -262,6 +263,7 @@ class _PaymentBetaState extends State<PaymentBeta> {
 
                         };
                         //final sending = await http.post(Uri.parse("http://192.168.100.85:8000/depot/${montant.text.trim()}"));
+                        //final sending = await http.post(Uri.parse("http://192.168.100.85:8000/depot/${montant.text.trim()}"))
                         final sending = await http.post(
                           Uri.parse(url),
                           body: jsonEncode(data),

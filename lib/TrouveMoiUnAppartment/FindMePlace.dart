@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -40,6 +41,15 @@ class _FindMePlaceState extends State<FindMePlace> {
       //backgroundColor: HexColor("#454545"),
       body: Column(
         children: [
+
+          Padding(
+              padding: EdgeInsets.only( right: 350,top: 50),
+              child: IconButton(onPressed: (){
+                Navigator.pop(context);
+              },
+                icon: Icon(FontAwesomeIcons.leftLong,size: 30,color: Colors.black),)
+          ),
+          SizedBox(height: 20,),
           Expanded(
             child: Center(
               child: StreamBuilder<QuerySnapshot>(
@@ -50,7 +60,10 @@ class _FindMePlaceState extends State<FindMePlace> {
                   }
 
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text('Loading...');
+                    return CircularProgressIndicator(
+                      color: Colors.black,
+
+                    );
                   }
 
                   return GridView.builder(

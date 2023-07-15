@@ -19,7 +19,7 @@ class _PageInformationState extends State<PageInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+     // backgroundColor: HexColor("#2C3333"),
       body: ListView(
         children: [
           SizedBox(height: 50,),
@@ -30,7 +30,7 @@ class _PageInformationState extends State<PageInformation> {
               height: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.6),
               ),
               child: Column(
                 children: [
@@ -38,7 +38,7 @@ class _PageInformationState extends State<PageInformation> {
                     children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 10,left: 20),
-                          child: Image.asset("assets/info/academy.png",height: 70,color: Colors.blue,),
+                          child: Image.asset("assets/info/academy.png",height: 70,color: Colors.black,),
                         ),
 
 
@@ -94,7 +94,7 @@ class _PageInformationState extends State<PageInformation> {
                 height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withOpacity(0.6),
                 ),
                 child: Column(
                   children: [
@@ -102,7 +102,7 @@ class _PageInformationState extends State<PageInformation> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 10,left: 20),
-                          child: Image.asset("assets/info/admission.png",height: 70,color: Colors.blue,),
+                          child: Image.asset("assets/info/admission.png",height: 70,color: Colors.black,),
                         ),
 
 
@@ -150,7 +150,7 @@ class _PageInformationState extends State<PageInformation> {
               height: 150,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.6),
               ),
               child: Column(
                 children: [
@@ -158,7 +158,7 @@ class _PageInformationState extends State<PageInformation> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 10,left: 20),
-                        child: Image.asset("assets/info/school.png",height: 70,color: Colors.blue,),
+                        child: Image.asset("assets/info/school.png",height: 70,color: Colors.black,),
                       ),
 
 
@@ -213,7 +213,7 @@ class _PageInformationState extends State<PageInformation> {
                 height: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withOpacity(0.6),
                 ),
                 child: Column(
                   children: [
@@ -221,7 +221,7 @@ class _PageInformationState extends State<PageInformation> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 10,left: 20),
-                          child: Image.asset("assets/info/contact.png",height: 70,color: Colors.blue,),
+                          child: Image.asset("assets/info/contact.png",height: 70,color: Colors.black,),
                         ),
 
 

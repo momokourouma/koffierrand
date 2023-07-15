@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
   // TextController
   final _emailCOntroller = TextEditingController();
   final _passwordController = TextEditingController();
-
+   bool isloading = true;
   //Form Validation
   final _formKey = GlobalKey<FormState>();
 
@@ -182,15 +182,30 @@ class _LoginState extends State<Login> {
                   onPressed: () async {
                     if(_formKey.currentState!.validate()) {
                       try {
+
+                          showDialog(context: context,
+                              builder: (context){
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.black,
+                                  ),
+                                );
+                              });
+
+
                         await FirebaseAuth.instance.signInWithEmailAndPassword(
                             email: _emailCOntroller.text.trim(),
                             password: _passwordController.text.trim());
                         // Next page
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>MyNav()));
+
+                          Navigator.of(context).pop();
+                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyNav()));
+
 
 
                       } on FirebaseAuthException catch (e) {
                         if(e.code == "user-not-found") {
+                          Navigator.of(context).pop();
                           showDialog(
                               context: context,
                               builder: (context) {
@@ -214,7 +229,16 @@ class _LoginState extends State<Login> {
                                   ],
                                 );
                               });
+
+
+
+
+
+
+
+
                         }else if(e.code == "wrong-password"){
+                          Navigator.of(context).pop();
                           {
                             showDialog(
                                 context: context,
@@ -244,6 +268,7 @@ class _LoginState extends State<Login> {
 
 
                         }else{
+                          Navigator.of(context).pop();
                           showDialog(
                               context: context,
                               builder: (context) {
@@ -267,10 +292,13 @@ class _LoginState extends State<Login> {
                                   ],
                                 );
                               });
+                          
 
                         }
+
                       }
                     }
+
 
 
 

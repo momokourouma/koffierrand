@@ -14,7 +14,7 @@ class _AdmissionState extends State<Admission> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#2C3333"),
+      //backgroundColor: HexColor("#2C3333"),
       body:ListView(
         children: [
           Column(
@@ -25,7 +25,7 @@ class _AdmissionState extends State<Admission> {
                 child:Text("Admission",
                   style: GoogleFonts.lato(
                     fontSize: 30,
-                    color: Colors.blue,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -33,7 +33,7 @@ class _AdmissionState extends State<Admission> {
                 padding: const EdgeInsets.only(top: 10,right: 10),
                 child: Text("BTS ( Les Document a fournir )",
                     style: GoogleFonts.lato(
-                      color: Colors.blue,
+                      color: Colors.black,
                       fontSize: 25,
                     )),
               ),
@@ -60,7 +60,7 @@ class _AdmissionState extends State<Admission> {
                       child: Text("-Une photo d’identité récente",
 
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -69,7 +69,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Photocopie d’une pièce d'identité en cours de validité",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -78,7 +78,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Relevé de notes de la Terminale ou titre obtenu en équivalence",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -91,7 +91,7 @@ class _AdmissionState extends State<Admission> {
                 child: Text("Licence/Ingéniérie/Sciences Médicales",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.lato(
-                      color: Colors.blue,
+                      color: Colors.black,
                       fontSize: 25,
                     )),
               ),
@@ -108,7 +108,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Extrait d’acte de naissance",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -116,7 +116,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Une photo d’identité",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -124,7 +124,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Photocopie d’une pièce d'identité en cours de validité",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -132,7 +132,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Relevé de notes du baccalauréat ou titre obtenu en équivalence",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -140,7 +140,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Systèmes D’informations",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -148,7 +148,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Diplôme du Baccalauréat ou titre obtenu en équivalence",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -163,7 +163,7 @@ class _AdmissionState extends State<Admission> {
                   child: Text("Mastère",
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
-                        color: Colors.blue,
+                        color: Colors.black,
                         fontSize: 25,
                       )),
                 ),
@@ -181,7 +181,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Extrait d’acte de naissance",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -189,7 +189,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Une photo d’identité",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -197,7 +197,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Photocopie d’une pièce d'identité en cours de validité",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -205,7 +205,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Relevé de notes de la Licence (L1,L2,L3)",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -213,7 +213,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Diplôme de Licence ou titre obtenu en équivalence",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -221,7 +221,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 5),
                       child: Text("- Curriculum vitae (CV) actualisé",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 20,
                           )),
                     ),
@@ -229,7 +229,7 @@ class _AdmissionState extends State<Admission> {
                       padding: const EdgeInsets.only(left: 30,top: 10),
                       child: Text("- Lettre de motivation",
                           style: GoogleFonts.lato(
-                            color: Colors.white,
+                            color:Colors.black,
                             fontSize: 20,
                           )),
                     ),

@@ -222,18 +222,30 @@ class _RegisterState extends State<Register> {
                         return showDialog(context: context,
                             builder: (contex){
                           return AlertDialog(
-                            content: Text("Les deux mot de passe ne sont pas conform",
+                            content: Text("Les deux mot de passe ne sont pas identique",
                             textAlign: TextAlign.center),
                           );
                             });
                       }
                       if(ans){
                         try{
+                          showDialog(context: context,
+                              builder: (context){
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.black,
+                                  ),
+                                );
+                              });
                           await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailController.text.trim(),
                               password: _passwordController.text.trim());
+
+                          Navigator.of(context).pop;
+
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
 
                         } on FirebaseAuthException catch (e){
+                          Navigator.of(context).pop;
                           showDialog(context: context,
                               builder: (context){
                                 return AlertDialog(
